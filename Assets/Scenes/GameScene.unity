@@ -144,6 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 10
   panBorderThickness: 5
+  scroll: 0
+  scrollSpeed: 10
+  mainCam: {fileID: 161816683}
 --- !u!81 &161816682
 AudioListener:
   m_ObjectHideFlags: 0
