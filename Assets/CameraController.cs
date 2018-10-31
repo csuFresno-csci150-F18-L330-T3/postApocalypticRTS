@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 //Basic WASD and Mouse camera control
-//Will try to add scroll wheel zoom in/out
+
 public class CameraController : MonoBehaviour
 {
 
     public float panSpeed = 10f;
     public float panBorderThickness = 5f;
 
-    // Update is called once per frame
+    //Scroll wheel functions
+    public float scroll;
+    public float scrollSpeed = 10f;
+    public Camera mainCam;
+    float minZoom = 1f;
+    float maxZoom = 20f;
+
     void Update()
     {
 
         Vector3 pos = transform.position;
-
+        // WASD camera method
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
             pos.y += panSpeed * Time.deltaTime;
@@ -32,6 +38,11 @@ public class CameraController : MonoBehaviour
         {
             pos.x -= panSpeed * Time.deltaTime;
         }
+        //Scroll method
+        scroll = Input.GetAxis("Mouse ScrollWheel");
+        float zoom = mainCam.orthographicSize + (-scroll * scrollSpeed);
+        zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
+        mainCam.orthographicSize = zoom;
 
         transform.position = pos;
     }
