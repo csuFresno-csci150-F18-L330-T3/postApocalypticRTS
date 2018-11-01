@@ -18,6 +18,33 @@ public class CameraController : MonoBehaviour
 	
 	public Tile redSquare;				
     public Tilemap worldTileMap;	
+	
+	const int WORLD_X_MIN = -50;
+	const int WORLD_X_MAX = 50;
+	const int WORLD_Y_MIN = -50;
+	const int WORLD_Y_MAX = 50;
+	
+	int[,] worldMap = new int[100, 100];
+	
+	void Start(){
+		for(int i = 0; i < 100; i++){
+			for(int j = 50; j < 60; j++){
+				worldMap[i, j] = 1;
+			}
+		}
+		
+		int tempPosX = WORLD_X_MIN;
+		int tempPosY = WORLD_Y_MAX;
+		for(int i = 0; i < 100; i++){
+			for(int j = 0; j < 100; j++){
+				if(worldMap[i, j] == 1){
+					worldTileMap.SetTile(new Vector3Int(tempPosX, tempPosY, 0), redSquare);
+				}
+				tempPosX++;
+			}
+			tempPosY--;
+		}
+	}
 
     void Update()
     {
@@ -26,30 +53,46 @@ public class CameraController : MonoBehaviour
         // WASD camera method
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
-            pos.y += panSpeed * Time.deltaTime;
-			Vector3Int posInt = Vector3Int.RoundToInt(pos);
-			worldTileMap.SetTile(posInt, redSquare);
+			if(pos.y < WORLD_Y_MAX){
+				pos.y += panSpeed * Time.deltaTime;
+				
+				Vector3Int posInt = Vector3Int.RoundToInt(pos);
+				//worldTileMap.SetTile(posInt, redSquare);
+				Debug.Log("X: " + posInt.x + "; Y: " + posInt.y);
+			}
         }
 
         if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
         {
-            pos.y -= panSpeed * Time.deltaTime;
-			Vector3Int posInt = Vector3Int.RoundToInt(pos);
-			worldTileMap.SetTile(posInt, redSquare);
+			if(pos.y > WORLD_Y_MIN){
+				pos.y -= panSpeed * Time.deltaTime;
+				
+				Vector3Int posInt = Vector3Int.RoundToInt(pos);
+				//worldTileMap.SetTile(posInt, redSquare);
+				Debug.Log("X: " + posInt.x + "; Y: " + posInt.y);
+			}
         }
 
         if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
         {
-            pos.x += panSpeed * Time.deltaTime;
-			Vector3Int posInt = Vector3Int.RoundToInt(pos);
-			worldTileMap.SetTile(posInt, redSquare);
+			if(pos.x < WORLD_X_MAX){
+				pos.x += panSpeed * Time.deltaTime;
+				
+				Vector3Int posInt = Vector3Int.RoundToInt(pos);
+				//worldTileMap.SetTile(posInt, redSquare);
+				Debug.Log("X: " + posInt.x + "; Y: " + posInt.y);
+			}
         }
 
         if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
         {
-            pos.x -= panSpeed * Time.deltaTime;
-			Vector3Int posInt = Vector3Int.RoundToInt(pos);
-			worldTileMap.SetTile(posInt, redSquare);
+			if(pos.x > WORLD_X_MIN){
+				pos.x -= panSpeed * Time.deltaTime;
+				
+				Vector3Int posInt = Vector3Int.RoundToInt(pos);
+				//worldTileMap.SetTile(posInt, redSquare);
+				Debug.Log("X: " + posInt.x + "; Y: " + posInt.y);
+			}
         }
         //Scroll method
         scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -59,4 +102,6 @@ public class CameraController : MonoBehaviour
 
         transform.position = pos;
     }
+	
+	
 }
