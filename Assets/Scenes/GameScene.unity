@@ -147,6 +147,7 @@ MonoBehaviour:
   scroll: 0
   scrollSpeed: 10
   mainCam: {fileID: 161816683}
+  panLimit: {x: 50, y: 50, z: 0}
   redSquare: {fileID: 11400000, guid: 4fee131823df15f4d85707518269a113, type: 2}
   worldTileMap: {fileID: 1489655428}
 --- !u!81 &161816682
