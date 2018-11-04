@@ -5,7 +5,7 @@ using UnityEngine;
 public class HUD : MonoBehaviour
 {
     public GUISkin Resource, Orders;
-    private const int orderBarWidth = 150, resourceBarHeight = 40;
+    private const int orderBarWidth = 1000, resourceBarHeight = 1000;
     private Player player;
 
 
