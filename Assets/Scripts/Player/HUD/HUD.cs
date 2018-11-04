@@ -19,7 +19,7 @@ public class HUD : MonoBehaviour
     {
         GUI.skin = Orders;
         GUI.BeginGroup(new Rect(Screen.width - orderBarWidth, resourceBarHeight, orderBarWidth, Screen.height - resourceBarHeight));
-        GUI.Box(new Rect(0, 0, orderBarWidth, Screen.height - resourceBarHeight), " ");
+        GUI.Box(new Rect(0, 0, orderBarWidth, Screen.height - resourceBarHeight), "");
         GUI.EndGroup();
 
     }
@@ -28,7 +28,7 @@ public class HUD : MonoBehaviour
     {
         GUI.skin = Resource;
         GUI.BeginGroup(new Rect(0, 0, Screen.width, resourceBarHeight));
-        GUI.Box(new Rect(0, 0, Screen.width, resourceBarHeight), " ");
+        GUI.Box(new Rect(0, 0, Screen.width, resourceBarHeight), "");
         GUI.EndGroup();
 
     }
