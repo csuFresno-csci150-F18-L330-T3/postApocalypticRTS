@@ -5,8 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class CameraController : MonoBehaviour
 {
-
-    public float panSpeed = 10f;
+ public float panSpeed = 10f;
 public float panBorderThickness = 5f;
 
 //Scroll wheel functions
