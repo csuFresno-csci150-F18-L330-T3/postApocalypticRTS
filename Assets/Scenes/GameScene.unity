@@ -124,6 +124,8 @@ GameObject:
   - component: {fileID: 161816683}
   - component: {fileID: 161816682}
   - component: {fileID: 161816681}
+  - component: {fileID: 161816685}
+  - component: {fileID: 161816686}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -148,8 +150,8 @@ MonoBehaviour:
   scrollSpeed: 10
   mainCam: {fileID: 161816683}
   panLimit: {x: 50, y: 50, z: 0}
-  redSquare: {fileID: 11400000, guid: 4fee131823df15f4d85707518269a113, type: 2}
-  worldTileMap: {fileID: 1489655428}
+  redSquare: {fileID: 0}
+  worldTileMap: {fileID: 0}
 --- !u!81 &161816682
 AudioListener:
   m_ObjectHideFlags: 0
@@ -210,6 +212,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &161816685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161816680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2581c3b5470a76843a868c6a2053f190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &161816686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161816680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e77253aab2f5c4489588ba97a7ead1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1489655425
 GameObject:
   m_ObjectHideFlags: 0
