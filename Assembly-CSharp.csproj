@@ -62,13 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
-<<<<<<< HEAD
+    <Compile Include="Assets\Scripts\Objects\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\UserInput.cs" />
-=======
     <Compile Include="Assets\Scripts\UnitSelectHelper.cs" />
     <Compile Include="Assets\Scripts\UnitSelection.cs" />
->>>>>>> master
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/rstev/Documents/GitHub/postApocalypticRTS/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
