@@ -10,18 +10,43 @@ public class WorldObject : MonoBehaviour {
     public int cost, hitPoints, maxHitPoints;
 
     //Variables accessible by subclasses
-    protected Player player;
-    protected string[] actions = { };
-    protected bool currentlySelected = false;
+    protected Player player; // used for player
+    protected string[] actions = { }; // used for commands
+    protected bool currentlySelected = false; // used for unit selection
 
 
 	// Use this for initialization
-	void Start () {
-		
-	}
+	protected virtual void Awake()
+    {
+
+
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	protected virtual void Update () {
 		
 	}
+
+    protected virtual void OnGUI()
+    {
+
+
+    }
+
+    public void setSelection(bool selected)
+    {
+        currentlySelected = selected;
+
+
+    }
+
+    public string[] GetActions()
+    {
+        return actions;
+
+    }
+    public virtual void PerformAction(string actionToPerform)
+    {
+    }
+
 }
