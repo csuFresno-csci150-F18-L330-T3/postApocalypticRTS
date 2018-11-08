@@ -14,8 +14,7 @@ public float scrollSpeed = 10f;
 public Camera mainCam;
 float minZoom = 1f;
 float maxZoom = 20f;
-public Vector3 panLimit;
-
+public Vector3 panLimit = new Vector3 (50, 50, 0);
 public Tile redSquare;
 public Tilemap worldTileMap;
 
