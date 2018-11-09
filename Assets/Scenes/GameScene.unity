@@ -150,8 +150,6 @@ MonoBehaviour:
   scrollSpeed: 10
   mainCam: {fileID: 161816683}
   panLimit: {x: 50, y: 50, z: 0}
-  redSquare: {fileID: 0}
-  worldTileMap: {fileID: 0}
 --- !u!81 &161816682
 AudioListener:
   m_ObjectHideFlags: 0
@@ -234,6 +232,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e77253aab2f5c4489588ba97a7ead1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &892766497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 892766499}
+  - component: {fileID: 892766498}
+  m_Layer: 0
+  m_Name: WorldMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &892766498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892766497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b9c7ba1926bc044ac5dbac2fdb90c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldTileMap: {fileID: 1489655428}
+  redSquareImg: {fileID: 11400000, guid: 4fee131823df15f4d85707518269a113, type: 2}
+  greenSquareImg: {fileID: 11400000, guid: 4eea728c6ff47564da97b54ee3b275fd, type: 2}
+  defaultWorldImg: {fileID: 11400000, guid: 4fee131823df15f4d85707518269a113, type: 2}
+--- !u!4 &892766499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892766497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1489655425
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +287,7 @@ GameObject:
   - component: {fileID: 1489655428}
   - component: {fileID: 1489655427}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: WorldTileMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +394,7 @@ GameObject:
   - component: {fileID: 1556953191}
   - component: {fileID: 1556953190}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: WorldGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
