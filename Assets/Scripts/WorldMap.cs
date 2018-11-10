@@ -67,6 +67,10 @@ public class WorldMap : MonoBehaviour{
 		btn_usAttacker.onClick.AddListener(OnClick_usAttacker);
         btn_usDefender.onClick.AddListener(OnClick_usDefender);
         btn_usWall.onClick.AddListener(OnClick_usWall);
+		
+		btn_usAttacker.GetComponent<Image>().color = Color.green;
+		btn_usDefender.GetComponent<Image>().color = Color.red;
+		btn_usWall.GetComponent<Image>().color = Color.red;
 	}
 
 	void OnClick_usAttacker(){
