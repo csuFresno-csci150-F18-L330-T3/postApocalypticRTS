@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class WorldMap : MonoBehaviour{
 	public Tile redSquareImg;
@@ -9,12 +10,16 @@ public class WorldMap : MonoBehaviour{
 	
 	public Tilemap worldMapFront;
 	
+	public Button btn_usAttacker, btn_usDefender, btn_usWall;
+	
 	public const int WORLD_X_MIN = 0;
 	public const int WORLD_X_MAX = 50;
 	public const int WORLD_Y_MIN = 0;
 	public const int WORLD_Y_MAX = 50;
 	
 	public enum UnitType {RedSquare, GreenSquare};
+	
+	public UnitType curType = UnitType.RedSquare;
 	
 	
 	// Need unit type, and positon for unit
@@ -59,26 +64,46 @@ public class WorldMap : MonoBehaviour{
 	}
 	
 	void Start(){
-		addUnit(new Vector3Int(3, 3, 0), UnitType.RedSquare);
-		addUnit(new Vector3Int(4, 3, 0), UnitType.GreenSquare);
-		addUnit(new Vector3Int(51, 4, 0), UnitType.GreenSquare);
-		removeUnit(new Vector3Int(4, 3, 0));
+		btn_usAttacker.onClick.AddListener(OnClick_usAttacker);
+        btn_usDefender.onClick.AddListener(OnClick_usDefender);
+        btn_usWall.onClick.AddListener(OnClick_usWall);
 	}
 
+	void OnClick_usAttacker(){
+		curType = UnitType.RedSquare;
+		btn_usAttacker.GetComponent<Image>().color = Color.green;
+		btn_usDefender.GetComponent<Image>().color = Color.red;
+		btn_usWall.GetComponent<Image>().color = Color.red;
+	}
+	
+	void OnClick_usDefender(){
+		curType = UnitType.RedSquare;
+		btn_usAttacker.GetComponent<Image>().color = Color.red;
+		btn_usDefender.GetComponent<Image>().color = Color.green;
+		btn_usWall.GetComponent<Image>().color = Color.red;
+	}
+	
+	void OnClick_usWall(){
+		curType = UnitType.GreenSquare;
+		btn_usAttacker.GetComponent<Image>().color = Color.red;
+		btn_usDefender.GetComponent<Image>().color = Color.red;
+		btn_usWall.GetComponent<Image>().color = Color.green;
+	}
+	
 	void Update(){
 		
 		// mouseLButton pressed
 		if(Input.GetMouseButtonDown(0)){
 				
 			// Add a redSquare
-			addUnit(getWorldCursorPos(), UnitType.RedSquare);
+			addUnit(getWorldCursorPos(), curType);
 		}
 		
 		// mouseRButton pressed
 		if(Input.GetMouseButtonDown(1)){
 				
 			// Add a greenSquare
-			addUnit(getWorldCursorPos(), UnitType.GreenSquare);
+			addUnit(getWorldCursorPos(), curType);
 		}
 	}
 }
