@@ -50,6 +50,14 @@ public class WorldMap : MonoBehaviour{
 		
 	}
 	
+	// Get curCursorPos as a Vec3Int of worldCoords
+	public Vector3Int getWorldCursorPos(){
+		Vector3 mPosPixels = Input.mousePosition;
+		Vector3 mPosWorldF = Camera.main.ScreenToWorldPoint(mPosPixels);
+		Vector3Int mPosWorldI = Vector3Int.FloorToInt(mPosWorldF);
+		return mPosWorldI;
+	}
+	
 	void Start(){
 		addUnit(new Vector3Int(3, 3, 0), UnitType.RedSquare);
 		addUnit(new Vector3Int(4, 3, 0), UnitType.GreenSquare);
@@ -61,17 +69,16 @@ public class WorldMap : MonoBehaviour{
 		
 		// mouseLButton pressed
 		if(Input.GetMouseButtonDown(0)){
-			int mPosX = (int)Input.mousePosition.x;
-			int mPosY = (int)Input.mousePosition.y;
-			
-			
-			Vector3 mPosPixels = Input.mousePosition;
-			mPosPixels.z = 0;
-			Vector3Int mPosWorld = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(mPosPixels));
-			Debug.Log(mPosWorld.x + ", " + mPosWorld.y);
 				
 			// Add a redSquare
-			addUnit(mPosWorld, UnitType.RedSquare);
+			addUnit(getWorldCursorPos(), UnitType.RedSquare);
+		}
+		
+		// mouseRButton pressed
+		if(Input.GetMouseButtonDown(1)){
+				
+			// Add a greenSquare
+			addUnit(getWorldCursorPos(), UnitType.GreenSquare);
 		}
 	}
 }
