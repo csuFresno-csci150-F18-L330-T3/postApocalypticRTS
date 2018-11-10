@@ -23,22 +23,22 @@ public class CameraController : MonoBehaviour
 		Vector3 pos = transform.position;
 		
 		// WASD camera method
-		if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
+		if (Input.GetKey("w") /*|| Input.mousePosition.y >= Screen.height - panBorderThickness*/)
 		{
 			pos.y += panSpeed * Time.deltaTime;
 		}
 
-		if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
+		if (Input.GetKey("s") /*|| Input.mousePosition.y <= panBorderThickness*/)
 		{
 			pos.y -= panSpeed * Time.deltaTime;
 		}
 
-		if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
+		if (Input.GetKey("d") /*|| Input.mousePosition.x >= Screen.width - panBorderThickness*/)
 		{
 			pos.x += panSpeed * Time.deltaTime;
 		}
 
-		if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
+		if (Input.GetKey("a") /*|| Input.mousePosition.x <= panBorderThickness*/)
 		{
 			pos.x -= panSpeed * Time.deltaTime;
 		}
