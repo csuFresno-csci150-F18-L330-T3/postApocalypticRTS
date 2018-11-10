@@ -259,10 +259,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b9c7ba1926bc044ac5dbac2fdb90c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldTileMap: {fileID: 1489655428}
   redSquareImg: {fileID: 11400000, guid: 4fee131823df15f4d85707518269a113, type: 2}
   greenSquareImg: {fileID: 11400000, guid: 4eea728c6ff47564da97b54ee3b275fd, type: 2}
   defaultWorldImg: {fileID: 11400000, guid: 4fee131823df15f4d85707518269a113, type: 2}
+  worldMapFront: {fileID: 1489655428}
 --- !u!4 &892766499
 Transform:
   m_ObjectHideFlags: 0

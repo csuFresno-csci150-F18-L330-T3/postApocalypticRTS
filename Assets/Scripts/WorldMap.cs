@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.Tilemaps;
 
 public class WorldMap : MonoBehaviour{
@@ -12,7 +13,6 @@ public class WorldMap : MonoBehaviour{
 	public const int WORLD_X_MAX = 50;
 	public const int WORLD_Y_MIN = 0;
 	public const int WORLD_Y_MAX = 50;
-	public UnitType[,] worldMapBack = new UnitType[WORLD_Y_MAX, WORLD_X_MAX];
 	
 	public enum UnitType {RedSquare, GreenSquare};
 	
@@ -38,9 +38,6 @@ public class WorldMap : MonoBehaviour{
 			default:
 				break;
 		}
-		
-		// Add desired unit to backend world
-		worldMapBack[unitPos.y, unitPos.x] = unitType;
 	}
 	
 	// Need position of unit, will be replaced with flat land
@@ -61,5 +58,20 @@ public class WorldMap : MonoBehaviour{
 	}
 
 	void Update(){
+		
+		// mouseLButton pressed
+		if(Input.GetMouseButtonDown(0)){
+			int mPosX = (int)Input.mousePosition.x;
+			int mPosY = (int)Input.mousePosition.y;
+			
+			
+			Vector3 mPosPixels = Input.mousePosition;
+			mPosPixels.z = 0;
+			Vector3Int mPosWorld = Vector3Int.RoundToInt(Camera.main.ScreenToWorldPoint(mPosPixels));
+			Debug.Log(mPosWorld.x + ", " + mPosWorld.y);
+				
+			// Add a redSquare
+			addUnit(mPosWorld, UnitType.RedSquare);
+		}
 	}
 }
