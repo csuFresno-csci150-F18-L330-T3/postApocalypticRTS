@@ -67,7 +67,7 @@ public class WorldMap : MonoBehaviour{
 			
 			Vector3 mPosPixels = Input.mousePosition;
 			mPosPixels.z = 0;
-			Vector3Int mPosWorld = Vector3Int.RoundToInt(Camera.main.ScreenToWorldPoint(mPosPixels));
+			Vector3Int mPosWorld = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(mPosPixels));
 			Debug.Log(mPosWorld.x + ", " + mPosWorld.y);
 				
 			// Add a redSquare
