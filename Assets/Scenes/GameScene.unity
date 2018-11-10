@@ -1157,9 +1157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b9c7ba1926bc044ac5dbac2fdb90c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redSquareImg: {fileID: 11400000, guid: 2eb3d6d0a35bcf443ad3ae03942e0f56, type: 2}
-  greenSquareImg: {fileID: 11400000, guid: f17d71164d63d344ba643e031dcc5890, type: 2}
-  defaultWorldImg: {fileID: 11400000, guid: aac54d2516ed3594fbeca35362f2110f, type: 2}
+  attackerImg: {fileID: 11400000, guid: 2eb3d6d0a35bcf443ad3ae03942e0f56, type: 2}
+  defenderImg: {fileID: 11400000, guid: aac54d2516ed3594fbeca35362f2110f, type: 2}
+  wallImg: {fileID: 11400000, guid: f17d71164d63d344ba643e031dcc5890, type: 2}
+  groundImg: {fileID: 11400000, guid: c04551e17d43acb4ba193ac4d6ff39c6, type: 2}
   worldMapFront: {fileID: 1489655428}
   btn_usAttacker: {fileID: 881596900}
   btn_usDefender: {fileID: 573839412}

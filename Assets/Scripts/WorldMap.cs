@@ -4,22 +4,23 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class WorldMap : MonoBehaviour{
-	public Tile redSquareImg;
-	public Tile greenSquareImg;
-	public Tile defaultWorldImg;
+	public Tile attackerImg;
+	public Tile defenderImg;
+	public Tile wallImg;
+	public Tile groundImg;
 	
 	public Tilemap worldMapFront;
 	
 	public Button btn_usAttacker, btn_usDefender, btn_usWall;
 	
-	public const int WORLD_X_MIN = 0;
-	public const int WORLD_X_MAX = 50;
-	public const int WORLD_Y_MIN = 0;
-	public const int WORLD_Y_MAX = 50;
+	public const int WORLD_X_MIN = -100;
+	public const int WORLD_X_MAX = 100;
+	public const int WORLD_Y_MIN = -100;
+	public const int WORLD_Y_MAX = 100;
 	
-	public enum UnitType {RedSquare, GreenSquare};
+	public enum UnitType {Ground, Attacker, Defender, Wall};
 	
-	public UnitType curType = UnitType.RedSquare;
+	public UnitType curType = UnitType.Attacker;
 	
 	
 	// Need unit type, and positon for unit
@@ -34,25 +35,21 @@ public class WorldMap : MonoBehaviour{
 		
 		// Add desired unit's img to visible world
 		switch(unitType){
-			case UnitType.RedSquare:
-				worldMapFront.SetTile(unitPos, redSquareImg);
+			case UnitType.Attacker:
+				worldMapFront.SetTile(unitPos, attackerImg);
 				break;
-			case UnitType.GreenSquare:
-				worldMapFront.SetTile(unitPos, greenSquareImg);
+			case UnitType.Defender:
+				worldMapFront.SetTile(unitPos, defenderImg);
+				break;
+			case UnitType.Wall:
+				worldMapFront.SetTile(unitPos, wallImg);
+				break;
+			case UnitType.Ground:
+				worldMapFront.SetTile(unitPos, groundImg);
 				break;
 			default:
 				break;
 		}
-	}
-	
-	// Need position of unit, will be replaced with flat land
-	public void removeUnit(Vector3Int unitPos){
-		worldMapFront.SetTile(unitPos, defaultWorldImg);
-	}
-	
-	// Returns unit type at current pos
-	public void getUnit(){
-		
 	}
 	
 	// Get curCursorPos as a Vec3Int of worldCoords
@@ -71,24 +68,30 @@ public class WorldMap : MonoBehaviour{
 		btn_usAttacker.GetComponent<Image>().color = Color.green;
 		btn_usDefender.GetComponent<Image>().color = Color.red;
 		btn_usWall.GetComponent<Image>().color = Color.red;
+		
+		for(int tempX = WORLD_X_MIN; tempX < WORLD_X_MAX; tempX++){
+			for(int tempY = WORLD_Y_MIN; tempY < WORLD_Y_MAX; tempY++){
+				addUnit(new Vector3Int(tempX, tempY, 0), UnitType.Ground);
+			}
+		}
 	}
 
 	void OnClick_usAttacker(){
-		curType = UnitType.RedSquare;
+		curType = UnitType.Attacker;
 		btn_usAttacker.GetComponent<Image>().color = Color.green;
 		btn_usDefender.GetComponent<Image>().color = Color.red;
 		btn_usWall.GetComponent<Image>().color = Color.red;
 	}
 	
 	void OnClick_usDefender(){
-		curType = UnitType.RedSquare;
+		curType = UnitType.Defender;
 		btn_usAttacker.GetComponent<Image>().color = Color.red;
 		btn_usDefender.GetComponent<Image>().color = Color.green;
 		btn_usWall.GetComponent<Image>().color = Color.red;
 	}
 	
 	void OnClick_usWall(){
-		curType = UnitType.GreenSquare;
+		curType = UnitType.Wall;
 		btn_usAttacker.GetComponent<Image>().color = Color.red;
 		btn_usDefender.GetComponent<Image>().color = Color.red;
 		btn_usWall.GetComponent<Image>().color = Color.green;
@@ -96,17 +99,8 @@ public class WorldMap : MonoBehaviour{
 	
 	void Update(){
 		
-		// mouseLButton pressed
+		// mouseLButton pressed, add whatever unit is selected via buttons
 		if(Input.GetMouseButtonDown(0)){
-				
-			// Add a redSquare
-			addUnit(getWorldCursorPos(), curType);
-		}
-		
-		// mouseRButton pressed
-		if(Input.GetMouseButtonDown(1)){
-				
-			// Add a greenSquare
 			addUnit(getWorldCursorPos(), curType);
 		}
 	}
