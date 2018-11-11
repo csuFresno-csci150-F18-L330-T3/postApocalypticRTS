@@ -7,13 +7,16 @@ public class WorldMap : MonoBehaviour
 
     public GameObject PopUp;
 
+
     public void Open()
     {
-        PopUp.SetActive(true);
+        PopUp.gameObject.SetActive(true);
     }
 
     public void Close()
     {
-        PopUp.SetActive(false);
+        PopUp.gameObject.SetActive(false);
     }
 }
+
+
