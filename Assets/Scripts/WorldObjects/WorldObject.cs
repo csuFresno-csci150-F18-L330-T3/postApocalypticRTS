@@ -1,6 +1,6 @@
 ﻿
 using UnityEngine;
-using RTS;
+
 
 public class WorldObject : MonoBehaviour {
 
@@ -19,9 +19,7 @@ public class WorldObject : MonoBehaviour {
     // Use this for initialization
     protected virtual void Awake()
     {
-        selectionBounds = ResourceManager.InvalidBounds;
-        CalculateBounds();
-
+        
 
     }
     
