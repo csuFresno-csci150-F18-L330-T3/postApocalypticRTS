@@ -25,26 +25,28 @@ const int WORLD_Y_MAX = 50;
 
 int[,] worldMap = new int[100, 100];
 
-void Start()
-{
-    for(int i = 0; i < 100; i++){
-        for(int j = 50; j < 60; j++){
-            worldMap[i, j] = 1;
-        }
-    }
+    void Start()
+    {
+        /* for(int i = 0; i < 100; i++){
+             for(int j = 50; j < 60; j++){
+                 worldMap[i, j] = 1;
+             }
+         }
 
-    int tempPosX = WORLD_X_MIN;
-    int tempPosY = WORLD_Y_MAX;
-    for(int i = 0; i < 100; i++){
-        for(int j = 0; j < 100; j++){
-            if(worldMap[i, j] == 1){
-                worldTileMap.SetTile(new Vector3Int(tempPosX, tempPosY, 0), redSquare);
-            }
-            tempPosX++;
-        }
-        tempPosY--;
+         int tempPosX = WORLD_X_MIN;
+         int tempPosY = WORLD_Y_MAX;
+        /* for(int i = 0; i < 100; i++){
+             for(int j = 0; j < 100; j++){
+                 if(worldMap[i, j] == 1){
+                     worldTileMap.SetTile(new Vector3Int(tempPosX, tempPosY, 0), redSquare);
+                 }
+                 tempPosX++;
+             }
+             tempPosY--;
+         }
+     }
+     */
     }
-}
 
 void Update()
 {
@@ -101,8 +103,8 @@ void Update()
     mainCam.orthographicSize = zoom;
 
     //Pan Limit
-    pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
-    pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
+    //pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
+   // pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
 
     transform.position = pos;
 }
