@@ -6,11 +6,10 @@ public class Player : MonoBehaviour {
 
 
     public string username;
-    public bool human;
-    public WorldObject SelectedObject { get; set; }
+    public bool human; 
 
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
 		
 	}
 	
