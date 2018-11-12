@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class WorldMapButton : MonoBehaviour
 {
 
     public GameObject popUp;
 
-    private void Start()
+    void Start()
     {
 
     }
@@ -20,15 +19,17 @@ public class WorldMapButton : MonoBehaviour
         {
             popUp.gameObject.SetActive(!popUp.gameObject.activeSelf);
         }
+    }
+
+    public void Open()
+    {
         //Click World Map button to open/close world map 
-        if (Input.GetMouseButtonDown(0))
+        if (popUp != null)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-            popUp.gameObject.SetActive(!popUp.gameObject.activeSelf);
+            bool isActive = popUp.activeSelf;
+            popUp.SetActive(!isActive);
         }
     }
 
 }
-
-
 

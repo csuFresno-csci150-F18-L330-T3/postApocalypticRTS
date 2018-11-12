@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+
 
 public class ResearchTree : MonoBehaviour
 {
@@ -20,14 +20,18 @@ public class ResearchTree : MonoBehaviour
         {
             popUp.gameObject.SetActive(!popUp.gameObject.activeSelf);
         }
-        //Click Research Tree button to open/close research tree
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (EventSystem.current.IsPointerOverGameObject())
-                popUp.gameObject.SetActive(!popUp.gameObject.activeSelf);
-        }
+
     }
 
+    public void Open()
+    {
+        //Click Research Tree button to open/close world map 
+        if (popUp != null)
+        {
+            bool isActive = popUp.activeSelf;
+            popUp.SetActive(!isActive);
+        }
+    }
 }
 
 
