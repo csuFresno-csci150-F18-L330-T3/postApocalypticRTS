@@ -282,6 +282,11 @@ Prefab:
       propertyPath: m_Name
       value: unit
       objectReference: {fileID: 0}
+    - target: {fileID: 50176636221761460, guid: 08f45e163a174254fb4628e6a50bf307,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f45e163a174254fb4628e6a50bf307, type: 2}
   m_IsPrefabAsset: 0
@@ -483,6 +488,11 @@ Prefab:
     - target: {fileID: 1026626659335066, guid: 08f45e163a174254fb4628e6a50bf307, type: 2}
       propertyPath: m_Name
       value: basic unit (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 50176636221761460, guid: 08f45e163a174254fb4628e6a50bf307,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f45e163a174254fb4628e6a50bf307, type: 2}
@@ -52316,6 +52326,11 @@ Prefab:
     - target: {fileID: 4421212817691188, guid: 08f45e163a174254fb4628e6a50bf307, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 50176636221761460, guid: 08f45e163a174254fb4628e6a50bf307,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08f45e163a174254fb4628e6a50bf307, type: 2}
