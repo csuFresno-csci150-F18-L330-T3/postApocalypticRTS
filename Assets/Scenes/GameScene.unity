@@ -660,6 +660,66 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114911280053948304, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_text
+      value: World Map (M)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911280053948304, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911280053948304, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911280053948304, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911280053948304, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114911280053948304, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_text
+      value: Research (T)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_textInfo.characterCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
   m_IsPrefabAsset: 0
