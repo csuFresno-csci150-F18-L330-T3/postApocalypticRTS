@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Chase.cs" />
     <Compile Include="Assets\Scripts\GameMenu\ExitGame.cs" />
     <Compile Include="Assets\Scripts\GameMenu\ResearchTree.cs" />
     <Compile Include="Assets\Scripts\GameMenu\WorldMapButton.cs" />
