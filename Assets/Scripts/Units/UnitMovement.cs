@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class UnitMovement : MonoBehaviour
 {
@@ -16,9 +17,13 @@ public class UnitMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            target.z = transform.position.z;
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                target.z = transform.position.z;
+            }
         }
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
     }
 }
