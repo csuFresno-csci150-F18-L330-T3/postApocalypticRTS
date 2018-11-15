@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Chase : MonoBehaviour
 { 
-    public float speed;
+    public float speed = 3f;
     private Transform unit;
+    public float minDist = 10f;
+    private float range;
+
 
 	void Start ()
     {
@@ -15,6 +18,13 @@ public class Chase : MonoBehaviour
 	
 	void Update ()
     {
-        transform.position = Vector2.MoveTowards(transform.position, unit.position, speed * Time.deltaTime);
+        // check distance between unit and enemy
+        range = Vector2.Distance(transform.position, unit.position);
+
+        if (range < minDist)
+        {
+            //Enemy movement based on unit position
+            transform.position = Vector2.MoveTowards(transform.position, unit.position, speed * Time.deltaTime);
+        }
 	}
 }
