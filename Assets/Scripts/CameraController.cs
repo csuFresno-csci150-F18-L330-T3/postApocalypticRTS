@@ -14,7 +14,7 @@ public float scrollSpeed = 10f;
 public Camera mainCam;
 float minZoom = 1f;
 float maxZoom = 20f;
-public Vector3 panLimit = new Vector3 (50, 50, 0);
+public Vector3 panLimit;
 public Tile redSquare;
 public Tilemap worldTileMap;
 
@@ -101,8 +101,8 @@ void Update()
     mainCam.orthographicSize = zoom;
 
     //Pan Limit
-    //pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
-    //pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
+    pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
+    pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
 
     transform.position = pos;
 }

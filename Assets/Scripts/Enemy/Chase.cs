@@ -6,7 +6,7 @@ public class Chase : MonoBehaviour
 { 
     public float speed = 3f;
     private Transform unit;
-    public float minDist = 10f;
+    public float minDist = 7f;
     private float range;
 
 

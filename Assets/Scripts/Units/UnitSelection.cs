@@ -19,14 +19,14 @@ public static class Utilities
             return whiteTexture;
         }
     }
-
+    //using GUI to draw rectangle on screen
     public static void DrawScreenRect(Rect rect, Color color)
     {
         GUI.color = color;
         GUI.DrawTexture(rect, WhiteTexture);
         GUI.color = Color.white;
     }
-
+    //rectangle borders
    public static void DrawScreenRectBorder(Rect rect, float thickness, Color color)
     {
         //Top
@@ -47,7 +47,7 @@ public static class Utilities
         //Corners
         var topLeft = Vector3.Min(screenPosition1, screenPosition2);
         var bottomRight = Vector3.Max(screenPosition1, screenPosition2);
-        //Generate Rect
+        //Generate Rectangle 
         return Rect.MinMaxRect(topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
     } 
 }
