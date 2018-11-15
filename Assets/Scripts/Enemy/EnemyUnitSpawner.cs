@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class EnemyUnitSpawner : MonoBehaviour
 {
-
     public GameObject enemyUnitPrefab;
     GameObject enemyUnitPrefabClone;
+    Vector2 whereToSpawn;
+    public float spawnRate = 10.0f;// 2 secs change if you want lower or high respawn rate
+    float nextSpawn = 0.0f;
+
+
+
     // Use this for initialization
     void Start()
     {
@@ -15,10 +20,11 @@ public class EnemyUnitSpawner : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
+    {   if (Time.time > nextSpawn)
         {
-            enemyUnitPrefabClone = Instantiate(enemyUnitPrefab, transform.position, Quaternion.identity) as GameObject;
+            nextSpawn = Time.time + spawnRate;
+            whereToSpawn = new Vector2(5, 3);
+            Instantiate(enemyUnitPrefab, whereToSpawn, Quaternion.identity);
         }
     }
 }
