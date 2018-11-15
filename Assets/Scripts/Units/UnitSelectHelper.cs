@@ -7,11 +7,6 @@ public class UnitSelectHelper : MonoBehaviour
     bool isSelecting = false;
     Vector3 mousePosition1;
 
-    void Start()
-    {
-
-    }
-
 
     void Update()
     {

@@ -52,18 +52,3 @@ public static class Utilities
     } 
 }
 
-
-
-public class UnitSelection : MonoBehaviour
-{ 
-    void Start() {
-
-
-    }
-    void Update() {
-
-    }
-
-
-
-}
