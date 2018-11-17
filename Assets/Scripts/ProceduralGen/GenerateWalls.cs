@@ -1,27 +1,39 @@
 ﻿using UnityEngine;
 
-public class PerlinNoise : MonoBehaviour {
-
+public class GenerateWalls : MonoBehaviour{
     public int width = 512;
     public int height = 512;
     public float scale = 20f;
+    public int wallScale = 4;
     public float xOffset = 0f;
     public float yOffset = 0f;
+    public float threshold = 50f;
+    public GameObject wall;
 
-	// Use this for initialization
-	void Start ()
-    {
-        Renderer rend = GetComponent<Renderer>();
-        if (rend == null)
-            return;
+	void Start () {
         if (xOffset == 0f)
             xOffset = Random.Range(0f, 999999f);
         if (yOffset == 0f)
             yOffset = Random.Range(0f, 999999f);
-        rend.material.mainTexture = GenTexture();
+
+        threshold = (threshold / 100);
+        Debug.Log(threshold);
+        Texture2D textureMap = GenTexture();
+        for (int x = 0; (x*wallScale) < width; x++)
+        {
+            for (int y = 0; (y*wallScale) < height; y++)
+            {
+                Color c = new Color(threshold, threshold, threshold);
+                if (textureMap.GetPixel((x*wallScale), (y*wallScale)).b >= c.b)
+                {
+                    Vector3 pos = new Vector3((x * wallScale) - width / 2f + .5f, (y * wallScale) - height / 2f + .5f, 0f);
+                    Instantiate(wall, pos, Quaternion.identity, transform);
+                }
+            }
+        }
 	}
 
-    Texture2D GenTexture ()
+    Texture2D GenTexture()
     {
         Texture2D texture = new Texture2D(width, height);
 
@@ -33,7 +45,6 @@ public class PerlinNoise : MonoBehaviour {
                 texture.SetPixel(x, y, color);
             }
         }
-        texture.Apply();
         return texture;
     }
 
