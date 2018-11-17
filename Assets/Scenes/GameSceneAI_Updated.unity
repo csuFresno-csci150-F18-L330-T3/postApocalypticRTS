@@ -52725,12 +52725,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 512
-  height: 512
-  scale: 20
-  wallScale: 4
+  height: 288
+  noiseScale: 20
+  objectScale: 2
   xOffset: 0
   yOffset: 0
   threshold: 80
+  rawChance: 100
+  isWeighted: 1
+  hardThreshold: 0
+  weightedChance: 75
   wall: {fileID: 1844616874840632, guid: 00bea0021c7aa4f429b3a731e366fa9e, type: 2}
 --- !u!4 &1713275635
 Transform:
@@ -52740,7 +52744,7 @@ Transform:
   m_GameObject: {fileID: 1713275633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 5}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
