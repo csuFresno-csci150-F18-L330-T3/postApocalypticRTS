@@ -23,12 +23,12 @@ public class UnitSelectHelper : MonoBehaviour
 
     void OnGUI()
     {
-        if (isSelecting)
+       /* if (isSelecting)
         {
             //Generate rect from mouse positions
             var rect = Utilities.GetScreenRect(mousePosition1, Input.mousePosition);
             Utilities.DrawScreenRect(rect, new Color(0.8f, 0.8f, 0.95f, 0.25f));
             Utilities.DrawScreenRectBorder( rect, 2, new Color(0.8f, 0.8f, 0.95f));
-        }
+        }*/
     }
 }
