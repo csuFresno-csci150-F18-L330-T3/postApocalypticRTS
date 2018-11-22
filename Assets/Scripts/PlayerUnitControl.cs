@@ -1,18 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.EventSystems;
 
-public class UnitSelection : MonoBehaviour
+public class PlayerUnitControl : MonoBehaviour
 {
     public int totPUnits = 0;
 
     private bool isUSEnabled = false;
+    private bool isMovementEnabled = false;
+
+    public float speed = 5f;
+    private Vector3 target;
 
     void Start() { }
 
     void Update()
     {
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (!isUSEnabled)
             {
@@ -26,9 +30,23 @@ public class UnitSelection : MonoBehaviour
             }
         }
 
-        else if(Input.GetMouseButtonDown(0))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if(isUSEnabled)
+            if (!isMovementEnabled)
+            {
+                Debug.Log("Unit movement mode enabled...");
+                isMovementEnabled = true;
+            }
+            else
+            {
+                Debug.Log("Unit movement mode disabled...");
+                isMovementEnabled = false;
+            }
+        }
+
+        else if (Input.GetMouseButtonDown(0))
+        {
+            if (isUSEnabled)
             {
                 // Get curCursorPos as a Vec3Int of worldCoords
                 Vector3 mPosPixels = Input.mousePosition;
@@ -40,10 +58,10 @@ public class UnitSelection : MonoBehaviour
                 GameObject[] pUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
                 GameObject selectedPUnit = null;
 
-                for(int i = 0; i < pUnits.Length; i++)
+                for (int i = 0; i < pUnits.Length; i++)
                 {
                     Vector3Int puPosI = Vector3Int.FloorToInt(pUnits[i].transform.position);
-                    if(mPosWorldI.x == puPosI.x && mPosWorldI.y == puPosI.y)
+                    if (mPosWorldI.x == puPosI.x && mPosWorldI.y == puPosI.y)
                     {
                         Debug.Log("Selected unit at x = " + puPosI.x + ", y = " + puPosI.y);
                         selectedPUnit = pUnits[i];
@@ -56,6 +74,20 @@ public class UnitSelection : MonoBehaviour
                 selectedPUnit.GetComponent<SpriteRenderer>().material.color = Color.black;
 
             }
+
+            else if (isMovementEnabled)
+            {
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                    target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    target.z = transform.position.z;
+                }
+
+                
+            }
         }
+
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
     }
 }
