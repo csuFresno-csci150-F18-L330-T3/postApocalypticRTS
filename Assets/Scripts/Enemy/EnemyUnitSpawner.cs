@@ -6,7 +6,7 @@ public class EnemyUnitSpawner : MonoBehaviour
 {
     public GameObject enemyUnitPrefab;
     GameObject enemyUnitPrefabClone;
-    Vector2 whereToSpawn;
+    //Vector2 whereToSpawn;
     public float spawnRate = 10.0f;// 2 secs change if you want lower or high respawn rate
     float nextSpawn = 0.0f;
 
@@ -23,8 +23,8 @@ public class EnemyUnitSpawner : MonoBehaviour
     {   if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnRate;
-            whereToSpawn = new Vector2(5, 3);
-            Instantiate(enemyUnitPrefab, whereToSpawn, Quaternion.identity);
+            //whereToSpawn = new Vector2(5, 3);
+            enemyUnitPrefabClone = Instantiate(enemyUnitPrefab, transform.position, Quaternion.identity) as GameObject;
         }
     }
 }
