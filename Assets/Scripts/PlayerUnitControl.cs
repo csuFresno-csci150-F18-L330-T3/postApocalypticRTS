@@ -15,7 +15,7 @@ public class PlayerUnitControl : MonoBehaviour
 
     void Start()
     {
-        target = transform.position;
+        target = new Vector3(-7f, -0.3f, 0f);
     }
 
     void Update()
