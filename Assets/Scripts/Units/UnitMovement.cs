@@ -5,15 +5,40 @@ using UnityEngine.EventSystems;
 public class UnitMovement : MonoBehaviour
 {
 
+    private float speed = 5f;
+    private Vector3 target;
+
+    private PlayerUnitControl pucScript = null;
+
     void Start()
     {
+        GameObject PlayerUnitControl = GameObject.Find("PlayerUnitControl");
+        pucScript = PlayerUnitControl.GetComponent<PlayerUnitControl>();
+
+        target = transform.position;
     }
 
     void Update()
     {
-        GameObject PlayerUnitControl = GameObject.Find("PlayerUnitControl");
-        PlayerUnitControl pucScript = PlayerUnitControl.GetComponent<PlayerUnitControl>();
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (pucScript.isMovementEnabled)
+            {
+                Color curColor = GetComponent<SpriteRenderer>().material.color;
+                if (curColor == Color.black)
+                {
+                    if (!EventSystem.current.IsPointerOverGameObject())
+                    {
+                        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        target.z = transform.position.z;
+                    }
+                    
+                }
+            }
+        }
 
-        transform.position = Vector3.MoveTowards(transform.position, pucScript.target, pucScript.speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+
     }
 }

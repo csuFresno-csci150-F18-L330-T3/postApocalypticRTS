@@ -6,7 +6,7 @@ public class PlayerUnitControl : MonoBehaviour
     public int totPUnits = 0;
 
     private bool isUSEnabled = false;
-    private bool isMovementEnabled = false;
+    public bool isMovementEnabled = false;
 
     private bool isSelected = false;
 
@@ -90,11 +90,7 @@ public class PlayerUnitControl : MonoBehaviour
 
             else if (isMovementEnabled)
             {
-                if (!EventSystem.current.IsPointerOverGameObject())
-                {
-                    target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    target.z = transform.position.z;
-                }
+                
             }
         }
 
