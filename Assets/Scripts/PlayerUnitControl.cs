@@ -8,10 +8,15 @@ public class PlayerUnitControl : MonoBehaviour
     private bool isUSEnabled = false;
     private bool isMovementEnabled = false;
 
-    public float speed = 5f;
-    private Vector3 target;
+    private bool isSelected = false;
 
-    void Start() { }
+    public float speed = 5f;
+    public Vector3 target;
+
+    void Start()
+    {
+        target = transform.position;
+    }
 
     void Update()
     {
@@ -69,9 +74,17 @@ public class PlayerUnitControl : MonoBehaviour
                     }
                 }
 
-                //Destroy(selectedPUnit);
-
-                selectedPUnit.GetComponent<SpriteRenderer>().material.color = Color.black;
+                Color curSPUColor = selectedPUnit.GetComponent<SpriteRenderer>().material.color;
+                if(curSPUColor != Color.black)
+                {
+                    Debug.Log("Unit selected...");
+                    selectedPUnit.GetComponent<SpriteRenderer>().material.color = Color.black;
+                }
+                else if (curSPUColor == Color.black)
+                {
+                    Debug.Log("Unit deselected...");
+                    selectedPUnit.GetComponent<SpriteRenderer>().material.color = Color.white;
+                }
 
             }
 
@@ -82,12 +95,8 @@ public class PlayerUnitControl : MonoBehaviour
                     target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     target.z = transform.position.z;
                 }
-
-                
             }
         }
-
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
     }
 }
