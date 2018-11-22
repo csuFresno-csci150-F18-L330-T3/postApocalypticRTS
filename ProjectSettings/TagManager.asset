@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - EnemyUnit
+  - PlayerUnit
   layers:
   - Default
   - TransparentFX
