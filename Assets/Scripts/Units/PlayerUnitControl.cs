@@ -122,15 +122,43 @@ public class PlayerUnitControl : MonoBehaviour
 
         if (!isSelecting && isFirstShot)
         {
-            // Player finished selecting, coordRect ready
-
-            double selRect_xMin = Math.Floor(curSelectRect.xMin);
-            double selRect_xMax = Math.Floor(curSelectRect.xMax);
-            double selRect_yMin = Math.Floor(curSelectRect.yMin);
-            double selRect_yMax = Math.Floor(curSelectRect.yMax);
-
-            Debug.Log("CurSelRect: xL = " + selRect_xMin + ", xR = " + selRect_xMax + ", yL = " + selRect_yMin + ", yR = " + selRect_yMax);
             isFirstShot = false;
+
+            Vector3 selRect_topL = new Vector3(curSelectRect.xMin, curSelectRect.yMin, 0);
+            Vector3 selRect_topR = new Vector3(curSelectRect.xMax, curSelectRect.yMin, 0);
+            Vector3 selRect_botL = new Vector3(curSelectRect.xMin, curSelectRect.yMax, 0);
+            Vector3 selRect_botR = new Vector3(curSelectRect.xMax, curSelectRect.yMax, 0);
+
+            Vector3Int selRect_topL_I = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(selRect_topL));
+            Vector3Int selRect_topR_I = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(selRect_topR));
+            Vector3Int selRect_botL_I = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(selRect_botL));
+            Vector3Int selRect_botR_I = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(selRect_botR));
+
+            GameObject[] pUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
+
+            for (int i = 0; i < pUnits.Length; i++)
+            {
+                Vector3Int puPosI = Vector3Int.FloorToInt(pUnits[i].transform.position);
+
+                if (puPosI.x >= selRect_topL_I.x && puPosI.x <= selRect_topR_I.x)
+                {
+                    if (puPosI.y >= selRect_topL_I.y && puPosI.y <= selRect_botL_I.y)
+                    {
+                        // Unit within range, select it
+                        Color curSPUColor = pUnits[i].GetComponent<SpriteRenderer>().material.color;
+                        if (curSPUColor != Color.black)
+                        {
+                            Debug.Log("Unit selected...");
+                            pUnits[i].GetComponent<SpriteRenderer>().material.color = Color.black;
+                        }
+                        else if (curSPUColor == Color.black)
+                        {
+                            Debug.Log("Unit deselected...");
+                            pUnits[i].GetComponent<SpriteRenderer>().material.color = Color.white;
+                        }
+                    }
+                }
+            }
         }
 
     }
