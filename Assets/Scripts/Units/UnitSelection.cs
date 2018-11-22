@@ -26,6 +26,19 @@ public class UnitSelection : MonoBehaviour
             }
         }
 
+        else if(Input.GetMouseButtonDown(0))
+        {
+            if(isUSEnabled)
+            {
+                // Get curCursorPos as a Vec3Int of worldCoords
+                Vector3 mPosPixels = Input.mousePosition;
+                Vector3 mPosWorldF = Camera.main.ScreenToWorldPoint(mPosPixels);
+                Vector3Int mPosWorldI = Vector3Int.FloorToInt(mPosWorldF);
+
+                Debug.Log("Mouse L_Button click at x = " + mPosWorldI.x + ", y = " + mPosWorldI.y);
+            }
+        }
+
         /*if(Input.GetKey(KeyCode.Q))
         {
             Debug.Log("Unit select mode enabled...");
