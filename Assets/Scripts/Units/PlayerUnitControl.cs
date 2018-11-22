@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerUnitControl : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerUnitControl : MonoBehaviour
 
     private bool isSelecting = false;
     private Vector3 mousePosition1;
+    private Rect curSelectRect;
+    private bool isFirstShot = false;
 
     void Start()
     {
@@ -70,7 +73,6 @@ public class PlayerUnitControl : MonoBehaviour
           
 
 
-
                 // Get curCursorPos as a Vec3Int of worldCoords
                 Vector3 mPosPixels = Input.mousePosition;
                 Vector3 mPosWorldF = Camera.main.ScreenToWorldPoint(mPosPixels);
@@ -113,7 +115,22 @@ public class PlayerUnitControl : MonoBehaviour
             if (isUSEnabled && isSelecting)
             {
                 isSelecting = false;
+                isFirstShot = true;
             }
+        }
+
+
+        if (!isSelecting && isFirstShot)
+        {
+            // Player finished selecting, coordRect ready
+
+            double selRect_xMin = Math.Floor(curSelectRect.xMin);
+            double selRect_xMax = Math.Floor(curSelectRect.xMax);
+            double selRect_yMin = Math.Floor(curSelectRect.yMin);
+            double selRect_yMax = Math.Floor(curSelectRect.yMax);
+
+            Debug.Log("CurSelRect: xL = " + selRect_xMin + ", xR = " + selRect_xMax + ", yL = " + selRect_yMin + ", yR = " + selRect_yMax);
+            isFirstShot = false;
         }
 
     }
@@ -124,6 +141,7 @@ public class PlayerUnitControl : MonoBehaviour
         {
             //Generate rect from mouse positions
             var rect = Utilities.GetScreenRect(mousePosition1, Input.mousePosition);
+            curSelectRect = rect;
             Utilities.DrawScreenRect(rect, new Color(0.8f, 0.8f, 0.95f, 0.25f));
             Utilities.DrawScreenRectBorder(rect, 2, new Color(0.8f, 0.8f, 0.95f));
         }
