@@ -38,16 +38,21 @@ public class UnitSelection : MonoBehaviour
                 Debug.Log("Mouse L_Button click at x = " + mPosWorldI.x + ", y = " + mPosWorldI.y);
 
                 GameObject[] pUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
+                GameObject selectedPUnit = null;
 
                 for(int i = 0; i < pUnits.Length; i++)
                 {
                     Vector3Int puPosI = Vector3Int.FloorToInt(pUnits[i].transform.position);
                     if(mPosWorldI.x == puPosI.x && mPosWorldI.y == puPosI.y)
                     {
-                        Debug.Log("Closet unit found at x = " + puPosI.x + ", y = " + puPosI.y);
+                        Debug.Log("Selected unit at x = " + puPosI.x + ", y = " + puPosI.y);
+                        selectedPUnit = pUnits[i];
                         break;
                     }
                 }
+
+                Destroy(selectedPUnit);
+
             }
         }
     }
