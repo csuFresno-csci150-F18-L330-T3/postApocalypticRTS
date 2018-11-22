@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
 
 public class UnitMovement : MonoBehaviour
@@ -38,7 +37,5 @@ public class UnitMovement : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-
-
     }
 }
