@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Prefab specific script
+
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UnitMovement : MonoBehaviour
@@ -21,11 +23,14 @@ public class UnitMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            // Continue if unit movement mode is enabled in pucScript
             if (pucScript.isMovementEnabled)
             {
+                // Check if unit is marked as selected via color
                 Color curColor = GetComponent<SpriteRenderer>().material.color;
                 if (curColor == Color.black)
                 {
+                    // Unit is selected, move it
                     if (!EventSystem.current.IsPointerOverGameObject())
                     {
                         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
