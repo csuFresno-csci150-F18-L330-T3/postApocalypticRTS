@@ -24,6 +24,14 @@ public class PlayerUnitControl : MonoBehaviour
     private Rect curSelectRect;
     private bool isFirstShot = false;
 
+    public Vector3 tL;
+    public Vector3 tR;
+    public Vector3 bL;
+    public Vector3 bR;
+
+    public float rectYMin;
+    public float rectYMax;
+
     void Start()
     {
         target = new Vector3(-7f, -0.3f, 0f);
@@ -73,7 +81,7 @@ public class PlayerUnitControl : MonoBehaviour
           
 
 
-                // Get curCursorPos as a Vec3Int of worldCoords
+               /* // Get curCursorPos as a Vec3Int of worldCoords
                 Vector3 mPosPixels = Input.mousePosition;
                 Vector3 mPosWorldF = Camera.main.ScreenToWorldPoint(mPosPixels);
                 Vector3Int mPosWorldI = Vector3Int.FloorToInt(mPosWorldF);
@@ -105,7 +113,7 @@ public class PlayerUnitControl : MonoBehaviour
                 {
                     Debug.Log("Unit deselected...");
                     selectedPUnit.GetComponent<SpriteRenderer>().material.color = Color.white;
-                }
+                }*/
 
             }
         }
@@ -123,16 +131,25 @@ public class PlayerUnitControl : MonoBehaviour
         if (!isSelecting && isFirstShot)
         {
             isFirstShot = false;
+            rectYMin = curSelectRect.yMin;
+            rectYMax = curSelectRect.yMax;
 
             Vector3 selRect_topL = new Vector3(curSelectRect.xMin, curSelectRect.yMin, 0);
-            Vector3 selRect_topR = new Vector3(curSelectRect.xMax, curSelectRect.yMin, 0);
-            Vector3 selRect_botL = new Vector3(curSelectRect.xMin, curSelectRect.yMax, 0);
-            Vector3 selRect_botR = new Vector3(curSelectRect.xMax, curSelectRect.yMax, 0);
+            Vector3 selRect_topR = new Vector3(curSelectRect.xMin+curSelectRect.width, curSelectRect.yMin, 0);
+            Vector3 selRect_botL = new Vector3(curSelectRect.xMin, curSelectRect.yMin+curSelectRect.height, 0);
+            Vector3 selRect_botR = new Vector3(curSelectRect.xMin+curSelectRect.width, curSelectRect.yMin+curSelectRect.height, 0);
 
             Vector3Int selRect_topL_I = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(selRect_topL));
             Vector3Int selRect_topR_I = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(selRect_topR));
             Vector3Int selRect_botL_I = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(selRect_botL));
             Vector3Int selRect_botR_I = Vector3Int.FloorToInt(Camera.main.ScreenToWorldPoint(selRect_botR));
+
+            tL = selRect_topL_I;
+            tR = selRect_topR_I;
+            bL = selRect_botL_I;
+            bR = selRect_botR_I;
+
+            Debug.Log(selRect_topL_I.x + ", " + selRect_topL_I.y);
 
             GameObject[] pUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
 
