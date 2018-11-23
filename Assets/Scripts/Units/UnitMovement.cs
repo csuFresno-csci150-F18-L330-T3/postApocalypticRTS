@@ -4,26 +4,56 @@ using UnityEngine.EventSystems;
 
 public class UnitMovement : MonoBehaviour
 {
+    public bool isSelected = false;
 
-    public float speed = 5f;
-    private Vector3 target;
+    private Camera camera;
+    private UnitSelectHelper inputHandler;
 
-    void Start()
+
+    public Vector2 target;
+
+    [SerializeField] private float _speed = 5;
+    private void Awake()
     {
+        camera = Camera.main;
+        inputHandler = camera.GetComponent<UnitSelectHelper>();
         target = transform.position;
     }
-
+    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (inputHandler.IsWithinSelectionBounds(gameObject))
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                target.z = transform.position.z;
-            }
+            isSelected = true;
+            target = transform.position;
         }
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        MoveUnit();
+        transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * _speed);
 
     }
+
+    private void MoveUnit()
+    {
+        if (inputHandler.isSelecting)
+        {
+            return;
+        }
+
+        if (isSelected)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                // stop movement as well
+                // target = transform.position;
+                isSelected = false;
+            }
+        }
+    }
 }
+
