@@ -12,7 +12,7 @@ public class Chase : MonoBehaviour
     public GameObject FindClosestUnit()
     {
         GameObject[] unit;
-        unit = GameObject.FindGameObjectsWithTag("Player");
+        unit = GameObject.FindGameObjectsWithTag("PlayerUnit");
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
