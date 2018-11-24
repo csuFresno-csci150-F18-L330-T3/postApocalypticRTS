@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 public static class Utilities
 {
@@ -65,4 +62,3 @@ public static class Utilities
         return bounds;
     }
 }
-

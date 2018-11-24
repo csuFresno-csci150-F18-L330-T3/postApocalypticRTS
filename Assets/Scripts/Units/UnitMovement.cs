@@ -1,19 +1,13 @@
-﻿// Prefab specific script
-
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    public bool isSelected = false;
-
-// Jace code block
+    private Vector2 target;
     private Camera camera;
     private UnitSelectHelper inputHandler;
-
-    public Vector2 target;
-
+    private bool isSelected = false;
     [SerializeField] private float _speed = 5;
+
     private void Awake()
     {
         camera = Camera.main;
@@ -21,15 +15,16 @@ public class UnitMovement : MonoBehaviour
         target = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Check if unit contained within selection rectangle (Multi-Unit Selection)
         if (inputHandler.IsWithinSelectionBounds(gameObject))
         {
             isSelected = true;
             target = transform.position;
         }
 
+        // Check if unit is to be selected by user (Single Unit Selection)
         else if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.Alpha1))
         {
             Vector3Int mPosWorldI = getCurCursorWorldCoords();
@@ -41,7 +36,10 @@ public class UnitMovement : MonoBehaviour
             }
         }
 
+        // Update unit's target position based on player's desired movement position
         MoveUnit();
+
+        // Update unit's current positon within world
         transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * _speed);
 
     }
@@ -78,4 +76,3 @@ public class UnitMovement : MonoBehaviour
         return mPosWorldI;
     }
 }
-
