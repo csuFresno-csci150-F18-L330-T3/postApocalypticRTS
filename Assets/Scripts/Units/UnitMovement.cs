@@ -1,51 +1,45 @@
-﻿// Prefab specific script
-
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    public bool isSelected = false;
-
-// Jace code block
+    private Vector2 target;
     private Camera camera;
     private UnitSelectHelper inputHandler;
-
-
-    public Vector2 target;
-
+    private bool isSelected = false;
     [SerializeField] private float _speed = 5;
+
     private void Awake()
     {
         camera = Camera.main;
         inputHandler = camera.GetComponent<UnitSelectHelper>();
         target = transform.position;
     }
-//=======
-  //  private float speed = 5f;
-   // private Vector3 target;
 
-   // private PlayerUnitControl pucScript = null;
-
-  //  void Start()
-   // {
-   //     GameObject PlayerUnitControl = GameObject.Find("PlayerUnitControl");
-    //    pucScript = PlayerUnitControl.GetComponent<PlayerUnitControl>();
-
-
-   // target = transform.position;
-  //  }
-//>>>>>>> code from other branch
-    // Update is called once per frame
     void Update()
     {
+        // Check if unit contained within selection rectangle (Multi-Unit Selection)
         if (inputHandler.IsWithinSelectionBounds(gameObject))
         {
             isSelected = true;
             target = transform.position;
         }
 
+        // Check if unit is to be selected by user (Single Unit Selection)
+        else if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.Alpha1))
+        {
+            Vector3Int mPosWorldI = getCurCursorWorldCoords();
+            Vector3Int puPosI = Vector3Int.FloorToInt(transform.position);
+
+            if (mPosWorldI.x == puPosI.x && mPosWorldI.y == puPosI.y)
+            {
+                isSelected = true;
+            }
+        }
+
+        // Update unit's target position based on player's desired movement position
         MoveUnit();
+
+        // Update unit's current positon within world
         transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * _speed);
 
     }
@@ -54,7 +48,6 @@ public class UnitMovement : MonoBehaviour
     {
         if (inputHandler.isSelecting)
         {
-//<<<<<<< jace code block
             return;
         }
 
@@ -72,27 +65,14 @@ public class UnitMovement : MonoBehaviour
                 isSelected = false;
             }
         }
-//=======
-            // Continue if unit movement mode is enabled in pucScript
- //           if (pucScript.isMovementEnabled)
- //           {
-                // Check if unit is marked as selected via color
-  //              Color curColor = GetComponent<SpriteRenderer>().material.color;
-  //              if (curColor == Color.black)
- //               {
-                    // Unit is selected, move it
- //                   if (!EventSystem.current.IsPointerOverGameObject())
-//                    {
-//target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-//target.z = transform.position.z;
-//                    }
-                    
-//                }
-//            }
-//}
+    }
 
- //       transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-//>>>>>>> other branch
+    // Helper method to generate a vectorInt containing the current position of the cursor in 
+    // world coordinates that are floored to produce integer values.
+    private Vector3Int getCurCursorWorldCoords()
+    {
+        Vector3 mPosWorldF = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3Int mPosWorldI = Vector3Int.FloorToInt(mPosWorldF);
+        return mPosWorldI;
     }
 }
-
