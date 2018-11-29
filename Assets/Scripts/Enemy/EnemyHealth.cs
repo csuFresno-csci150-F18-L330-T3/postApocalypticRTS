@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth = 0;
             Debug.Log("Dead!");
+            Destroy(gameObject);
         }
 
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
