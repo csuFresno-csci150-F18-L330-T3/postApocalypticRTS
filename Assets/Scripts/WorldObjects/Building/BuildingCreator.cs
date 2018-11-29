@@ -27,6 +27,7 @@ public class BuildingCreator : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.B) && useTag == false) {
             buildingPrefabClone = Instantiate(buildingPrefab, transform.position, Quaternion.identity) as GameObject;
+            Destroy(gameObject);
         }
     }
 }
