@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 58506988902756598}
   - component: {fileID: 114663407519851144}
   - component: {fileID: 114120154949068852}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 223137767747854166}
   - component: {fileID: 114693016713568686}
   - component: {fileID: 114931495363719776}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Healthbar Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 224542481796305464}
   - component: {fileID: 222952810508519668}
   - component: {fileID: 114282846869629666}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 224653391533414492}
   - component: {fileID: 222463027879309480}
   - component: {fileID: 114950071751929602}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456618235269910}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 224542481796305464}
