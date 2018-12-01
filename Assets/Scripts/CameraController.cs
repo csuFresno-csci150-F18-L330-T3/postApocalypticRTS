@@ -4,7 +4,7 @@
 
 public class CameraController : MonoBehaviour
 {
-    public float panSpeed = 10f;
+    public float panSpeed = 20f;
     public float panBorderThickness = 5f;
 
     //Scroll wheel functions
@@ -52,6 +52,16 @@ public class CameraController : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
         pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
 
-        transform.position = pos;
+        //Accelerate panSpeed
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            panSpeed = 100f;
+        }
+        else
+        {
+            panSpeed = 20f;
+        }
+
+    transform.position = pos;
     }
 }
