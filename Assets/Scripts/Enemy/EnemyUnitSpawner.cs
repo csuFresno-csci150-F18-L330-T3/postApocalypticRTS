@@ -9,13 +9,13 @@ public class EnemyUnitSpawner : MonoBehaviour
     //Vector2 whereToSpawn;
     public float spawnRate = 10.0f;// 2 secs change if you want lower or high respawn rate
     float nextSpawn = 0.0f;
-
+    public StatsTracker statsTracker;
 
 
     // Use this for initialization
     void Start()
     {
-
+        statsTracker = StatsTracker.Instance();
     }
 
     // Update is called once per frame
@@ -25,6 +25,8 @@ public class EnemyUnitSpawner : MonoBehaviour
             nextSpawn = Time.time + spawnRate;
             //whereToSpawn = new Vector2(5, 3);
             enemyUnitPrefabClone = Instantiate(enemyUnitPrefab, transform.position, Quaternion.identity) as GameObject;
+            enemyUnitPrefabClone.name = "Enemy" + Time.time.ToString();
+            statsTracker.RegEnemies(enemyUnitPrefabClone);
         }
     }
 }
