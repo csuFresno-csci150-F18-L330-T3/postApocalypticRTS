@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114997002457645746}
   - component: {fileID: 114860465654070150}
   - component: {fileID: 114314122383544432}
+  - component: {fileID: 114597505313016628}
   m_Layer: 9
   m_Name: basic unit
   m_TagString: PlayerUnit
@@ -197,6 +198,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8a9262bd4be454cbede80a099382e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114597505313016628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1026626659335066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4104fba8fbddc4149b8cac717eca9ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfItemsToBeCollected: 2
+  statsTracker: {fileID: 0}
+  UnitPrefab: {fileID: 1971232845779248, guid: 2e86098922d5f8a49a31bb9718033342, type: 2}
 --- !u!114 &114711699010706788
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -69,16 +69,20 @@ public class Chase : MonoBehaviour
         // check distance between unit and enemy
         
         range = Vector2.Distance(transform.position, FindClosestUnit().transform.position);
-        range_b = Vector2.Distance(transform.position, FindClosestUnit().transform.position);
+        range_b = Vector2.Distance(transform.position, FindClosestBase().transform.position);
 
-        if (range_b < minDist_b)
+ 
+        if (range < minDist)
         {
-            transform.position = Vector2.MoveTowards(transform.position, FindClosestBase().transform.position, speed * Time.deltaTime);
-        }
-        else if (range < minDist)
-        {
-            //Enemy movement based on unit position
-            transform.position = Vector2.MoveTowards(transform.position, FindClosestUnit().transform.position, speed * Time.deltaTime);
+            if (range_b < minDist_b)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, FindClosestBase().transform.position, speed * Time.deltaTime);
+            }
+            else
+            {
+                //Enemy movement based on unit position
+                transform.position = Vector2.MoveTowards(transform.position, FindClosestUnit().transform.position, speed * Time.deltaTime);
+            }
         }
 	}
 }

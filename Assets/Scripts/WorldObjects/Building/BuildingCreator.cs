@@ -7,6 +7,7 @@ public class BuildingCreator : MonoBehaviour {
     public GameObject buildingPrefab;
     GameObject[] buildingSpace;
     GameObject buildingPrefabClone;
+    public StatsTracker statsTracker;
     public bool useTag = false;
     public string myTag;
     
@@ -21,12 +22,17 @@ public class BuildingCreator : MonoBehaviour {
                 Instantiate(buildingPrefab, myBuilding.transform.position, myBuilding.transform.rotation);
             }
         }
+        else
+        {
+            statsTracker = StatsTracker.Instance();
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.B) && useTag == false) {
             buildingPrefabClone = Instantiate(buildingPrefab, transform.position, Quaternion.identity) as GameObject;
+            statsTracker.builder = false;
             Destroy(gameObject);
         }
     }

@@ -8,7 +8,7 @@ public class EnemyBaseLocGen : MonoBehaviour {
     public GameObject buildingContainerPrefab;
     //GameObject[] buildingContainerSpace;
     // Use this for initialization
-    void Start () {
+    void Awake () {
         for (int i = 0; i < numberOfBases; i++)
         {
             Vector3 position = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), 0);
