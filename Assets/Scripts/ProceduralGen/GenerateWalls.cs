@@ -14,8 +14,9 @@ public class GenerateWalls : MonoBehaviour{
     public float weightedChance = 100f; //chance an object will spawn when weighted with the generated hue value (0 to 1)
                                         //a pixel with a hue of 0.8 has a 20% * weightedChance to spawn
     public GameObject wall;
+    public Texture2D textureMap;        //used to pass the texturemap generated to other scripts, dont add textures in script window
 
-	void Start () {
+	void Awake () {
         if (xOffset == 0f)
             xOffset = Random.Range(0f, 999999f);
         if (yOffset == 0f)
@@ -25,7 +26,7 @@ public class GenerateWalls : MonoBehaviour{
         rawChance /= 100;
         weightedChance /= 100;
         Debug.Log(threshold);
-        Texture2D textureMap = GenTexture();            //generate map for perlin noise
+        textureMap = GenTexture();            //generate map for perlin noise
         for (int x = 0; (x*objectScale) < width; x++)   //generation loop
         {
             for (int y = 0; (y*objectScale) < height; y++)

@@ -221,6 +221,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelecting: 0
+--- !u!1 &208221758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208221760}
+  - component: {fileID: 208221759}
+  m_Layer: 9
+  m_Name: ObjectSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &208221759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 208221758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852e916e250268a4bbbe940e5525b0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 512
+  height: 288
+  threshold: 80
+  numberOfObjects: 25
+  objectToSpawn: {fileID: 1554896952778184, guid: f26ac4a7ed55e254bb3cc23c535af15a,
+    type: 2}
+  worldScript: {fileID: 732627733}
+  distToAvoid: 10
+  overflowLimit: 1000
+--- !u!4 &208221760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 208221758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -45.030674, y: -3.591392, z: -1.234375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &249631069 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224465944072468840, guid: ab571798048bc324aba61eb7b37135cf,
@@ -263,7 +312,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4306376076094074, guid: 4cb7e7945ac96c74da34d7561ce5c6bd, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1088515172293046, guid: 4cb7e7945ac96c74da34d7561ce5c6bd, type: 2}
       propertyPath: m_TagString
@@ -456,9 +505,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 732627730}
-  - component: {fileID: 732627729}
   - component: {fileID: 732627731}
   - component: {fileID: 732627732}
+  - component: {fileID: 732627733}
   m_Layer: 9
   m_Name: WorldManager
   m_TagString: EnemyBaseSL
@@ -466,24 +515,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &732627729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 732627728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f97c1a87f995d1b4f855264ace670378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minX: -250
-  maxX: 250
-  minY: -130
-  maxY: 130
-  numberOfBases: 10
-  buildingContainerPrefab: {fileID: 1554896952778184, guid: f26ac4a7ed55e254bb3cc23c535af15a,
-    type: 2}
 --- !u!4 &732627730
 Transform:
   m_ObjectHideFlags: 0
@@ -493,7 +524,7 @@ Transform:
   m_GameObject: {fileID: 732627728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -529,6 +560,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   builder: 0
+--- !u!114 &732627733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 732627728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6916983b1d4e1ae4bbf1565aed2775d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 512
+  height: 288
+  noiseScale: 20
+  objectScale: 4
+  xOffset: 0
+  yOffset: 0
+  threshold: 83
+  rawChance: 100
+  isWeighted: 0
+  hardThreshold: 1
+  weightedChance: 75
+  wall: {fileID: 1844616874840632, guid: 00bea0021c7aa4f429b3a731e366fa9e, type: 2}
+  textureMap: {fileID: 0}
 --- !u!1001 &1188067423
 Prefab:
   m_ObjectHideFlags: 0
@@ -895,6 +950,18 @@ Prefab:
       propertyPath: m_Name
       value: WorldManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4707753115699968, guid: b77981a4384b60a469008b08e8c4bb07, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707753115699968, guid: b77981a4384b60a469008b08e8c4bb07, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707753115699968, guid: b77981a4384b60a469008b08e8c4bb07, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b77981a4384b60a469008b08e8c4bb07, type: 2}
   m_IsPrefabAsset: 0
@@ -935,7 +1002,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4306376076094074, guid: 4cb7e7945ac96c74da34d7561ce5c6bd, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1088515172293046, guid: 4cb7e7945ac96c74da34d7561ce5c6bd, type: 2}
       propertyPath: m_TagString
