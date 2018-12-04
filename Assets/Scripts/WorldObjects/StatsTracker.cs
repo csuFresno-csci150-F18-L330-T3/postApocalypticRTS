@@ -11,6 +11,7 @@ public class StatsTracker : MonoBehaviour {
         return statsTracker;
     }
     private int numberOfCollectedBluePrints = 0;
+    private int basenumber = 0;
     public bool builder = false;
 
     public int NumberOfCollectedBluePrints 
@@ -23,6 +24,19 @@ public class StatsTracker : MonoBehaviour {
         set
         {
             numberOfCollectedBluePrints = value;
+        }
+    }
+
+    public int Basenumber
+    {
+        get
+        {
+            return basenumber;
+        }
+
+        set
+        {
+            basenumber = value;
         }
     }
 
