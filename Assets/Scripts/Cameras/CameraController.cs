@@ -52,6 +52,12 @@ public class CameraController : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
         pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            pos.x = -5f;
+            pos.y = -5f;
+        }
+
         transform.position = pos;
     }
 }
