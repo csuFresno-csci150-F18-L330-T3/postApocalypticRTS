@@ -65,24 +65,19 @@ public class Chase : MonoBehaviour
 	
 	void Update ()
     {
-        
         // check distance between unit and enemy
-        
-        range = Vector2.Distance(transform.position, FindClosestUnit().transform.position);
-        range_b = Vector2.Distance(transform.position, FindClosestBase().transform.position);
+        range = FindClosestUnit() != null ? Vector2.Distance(transform.position, FindClosestUnit().transform.position) : minDist;
 
- 
-        if (range < minDist)
+        range_b = FindClosestBase() != null ? Vector2.Distance(transform.position, FindClosestBase().transform.position) : minDist_b;
+
+        if (range_b < minDist_b)
         {
-            if (range_b < minDist_b)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, FindClosestBase().transform.position, speed * Time.deltaTime);
-            }
-            else
-            {
-                //Enemy movement based on unit position
-                transform.position = Vector2.MoveTowards(transform.position, FindClosestUnit().transform.position, speed * Time.deltaTime);
-            }
+            transform.position = Vector2.MoveTowards(transform.position, FindClosestBase().transform.position, Random.Range(speed - 1, speed + 1) * Time.deltaTime);
         }
+        else if (range < minDist)
+        {
+           //Enemy movement based on unit position
+            transform.position = Vector2.MoveTowards(transform.position, FindClosestUnit().transform.position, Random.Range(speed -1, speed +1) * Time.deltaTime);
+        }   
 	}
 }
