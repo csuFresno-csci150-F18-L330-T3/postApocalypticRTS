@@ -149,6 +149,7 @@ MonoBehaviour:
   scrollSpeed: 10
   mainCam: {fileID: 161816683}
   panLimit: {x: 232, y: 125, z: 0}
+  pos: {x: 0, y: 0, z: 0}
 --- !u!81 &161816682
 AudioListener:
   m_ObjectHideFlags: 0
@@ -775,6 +776,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 662789957}
     m_Modifications:
+    - target: {fileID: 114623591466088776, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224465944072468840, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1017,7 +1023,7 @@ Prefab:
     - target: {fileID: 114217810911116430, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_text
-      value: 'Attack
+      value: 'Return to Base (B)
 
 '
       objectReference: {fileID: 0}
@@ -1034,17 +1040,17 @@ Prefab:
     - target: {fileID: 114217810911116430, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 7
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 114217810911116430, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114217810911116430, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114881655209338548, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
@@ -1078,17 +1084,50 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1951964227658060, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
       propertyPath: m_Name
-      value: Attacking Button
+      value: Return to Base Button
       objectReference: {fileID: 0}
     - target: {fileID: 1555281007306224, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
       propertyPath: m_Name
-      value: Attacking Text
+      value: Return to Base Text
       objectReference: {fileID: 0}
     - target: {fileID: 114703546027704570, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: popUp
       value: 
       objectReference: {fileID: 257055513}
+    - target: {fileID: 114623591466088776, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623591466088776, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500040234171494, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
+      propertyPath: m_Name
+      value: Place Unit Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1777446431649432, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
+      propertyPath: m_Name
+      value: Place Unit Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623591466088776, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623591466088776, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623591466088776, guid: ab571798048bc324aba61eb7b37135cf,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
   m_IsPrefabAsset: 0
