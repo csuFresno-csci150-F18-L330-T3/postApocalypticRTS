@@ -10,6 +10,8 @@ TagManager:
   - PlayerBase
   - BluePrint
   - PickUps
+  - Wall
+
   layers:
   - Default
   - TransparentFX
