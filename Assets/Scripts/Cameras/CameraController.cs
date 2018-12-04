@@ -63,7 +63,7 @@ public class CameraController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
 
         //Press B to return camera to base
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             ReturnToBase();
         }

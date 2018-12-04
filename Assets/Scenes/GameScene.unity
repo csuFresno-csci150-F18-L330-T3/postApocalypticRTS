@@ -1069,7 +1069,7 @@ Prefab:
     - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_text
-      value: Research (T)
+      value: Place Builder (B)
       objectReference: {fileID: 0}
     - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
@@ -1084,17 +1084,17 @@ Prefab:
     - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114295094950832748, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114881655209338548, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
@@ -1131,7 +1131,7 @@ Prefab:
     - target: {fileID: 114217810911116430, guid: ab571798048bc324aba61eb7b37135cf,
         type: 2}
       propertyPath: m_text
-      value: 'Return to Base (B)
+      value: 'Return to Base (G)
 
 '
       objectReference: {fileID: 0}
@@ -1235,6 +1235,18 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116752053638740, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
+      propertyPath: m_Name
+      value: Place Builder Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340211427508066, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
+      propertyPath: m_Name
+      value: Place Builder Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1609632982919494, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
+      propertyPath: m_Name
+      value: Place Builder Panel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab571798048bc324aba61eb7b37135cf, type: 2}
