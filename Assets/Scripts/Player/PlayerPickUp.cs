@@ -8,11 +8,11 @@ public class PlayerPickUp : MonoBehaviour {
     public Text countText;          //Store a reference to the UI Text component which will display the number of pickups collected.
     public Text winText;            //Store a reference to the UI Text component which will display the 'You win' message.
 
-    private int count;
+    public static int count=0;
 
     // Use this for initialization
     void Start () {
-        count = 0;
+        
         winText.text = "";
         SetCountText();
     }
