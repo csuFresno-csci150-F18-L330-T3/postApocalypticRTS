@@ -587,7 +587,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578286443}
-  - component: {fileID: 578286442}
   - component: {fileID: 578286441}
   - component: {fileID: 578286440}
   m_Layer: 9
@@ -634,24 +633,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   builder: 0
---- !u!114 &578286442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 578286439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f97c1a87f995d1b4f855264ace670378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minX: -250
-  maxX: 250
-  minY: -130
-  maxY: 130
-  numberOfBases: 10
-  buildingContainerPrefab: {fileID: 1088515172293046, guid: 4cb7e7945ac96c74da34d7561ce5c6bd,
-    type: 2}
 --- !u!4 &578286443
 Transform:
   m_ObjectHideFlags: 0
@@ -1355,6 +1336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1250444720}
   - component: {fileID: 1250444719}
+  - component: {fileID: 1250444721}
   m_Layer: 9
   m_Name: ObjectSpawner
   m_TagString: Untagged
@@ -1395,6 +1377,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1250444721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250444718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852e916e250268a4bbbe940e5525b0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 500
+  height: 240
+  threshold: 50
+  numberOfObjects: 10
+  objectToSpawn: {fileID: 1088515172293046, guid: 4cb7e7945ac96c74da34d7561ce5c6bd,
+    type: 2}
+  worldScript: {fileID: 578286440}
+  distToAvoid: 25
+  overflowLimit: 10000
 --- !u!1001 &1487494532
 Prefab:
   m_ObjectHideFlags: 0
