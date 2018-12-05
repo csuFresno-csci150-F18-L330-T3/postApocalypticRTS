@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerPickUp : MonoBehaviour {
 
@@ -19,8 +21,8 @@ public class PlayerPickUp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        SetCountText();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -43,7 +45,7 @@ public class PlayerPickUp : MonoBehaviour {
         //Check if we've collected all 12 pickups. If we have...
         if (count >= 5)
             //... then set the text property of our winText object to "You win!"
-            winText.text = "You win!";
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }
