@@ -26,9 +26,11 @@ public class CollectBlueprint : MonoBehaviour {
             Debug.Log("First Check"+statsTracker.NumberOfCollectedBluePrints.ToString());
             if (statsTracker.builder)
             {
-                if (numberOfItemsToBeCollected == statsTracker.NumberOfCollectedBluePrints + 1)
+                if (numberOfItemsToBeCollected - 1> statsTracker.NumberOfCollectedBluePrints)
                 {
-                    
+                    statsTracker.NumberOfCollectedBluePrints++;
+                    Destroy(hit);
+                    Debug.Log("Collected Blue Prints: " + statsTracker.NumberOfCollectedBluePrints.ToString());
                 }
             }
             else

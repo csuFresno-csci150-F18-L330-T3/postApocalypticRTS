@@ -1373,8 +1373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852e916e250268a4bbbe940e5525b0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 512
-  height: 288
+  width: 500
+  height: 260
   threshold: 80
   numberOfObjects: 25
   objectToSpawn: {fileID: 1554896952778184, guid: f26ac4a7ed55e254bb3cc23c535af15a,
