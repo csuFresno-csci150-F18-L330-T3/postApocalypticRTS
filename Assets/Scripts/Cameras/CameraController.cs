@@ -14,12 +14,22 @@ public class CameraController : MonoBehaviour
     float minZoom = 1f;
     float maxZoom = 20f;
     public Vector3 panLimit;
+    public Vector3 pos;
 
-    void Start() { }
+    void Start()
+    {
+
+    }
+    //Press B to return Camera to base
+    public void ReturnToBase()
+    {
+            pos.x = -5f;
+            pos.y = -5f;
+    }
 
     void Update()
     {
-        Vector3 pos = transform.position;
+       pos = transform.position;
 
         // WASD camera method
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
@@ -63,5 +73,13 @@ public class CameraController : MonoBehaviour
         }
 
     transform.position = pos;
+        //Press B to return camera to base
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            ReturnToBase();
+        }
+
+        transform.position = pos;
     }
+
 }

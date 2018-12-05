@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UnitMovement : MonoBehaviour
 {
@@ -20,8 +21,14 @@ public class UnitMovement : MonoBehaviour
         // Check if unit contained within selection rectangle (Multi-Unit Selection)
         if (inputHandler.IsWithinSelectionBounds(gameObject))
         {
-            isSelected = true;
-            target = transform.position;
+            //Check if cursor is over UI element
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+
+                isSelected = true;
+                target = transform.position;
+
+            }
         }
 
         // Check if unit is to be selected by user (Single Unit Selection)
@@ -29,10 +36,13 @@ public class UnitMovement : MonoBehaviour
         {
             Vector3Int mPosWorldI = getCurCursorWorldCoords();
             Vector3Int puPosI = Vector3Int.FloorToInt(transform.position);
-
-            if (mPosWorldI.x == puPosI.x && mPosWorldI.y == puPosI.y)
+            //Check if cursor is over UI element
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                isSelected = true;
+                if (mPosWorldI.x == puPosI.x && mPosWorldI.y == puPosI.y)
+                {
+                    isSelected = true;
+                }
             }
         }
 
@@ -53,16 +63,24 @@ public class UnitMovement : MonoBehaviour
 
         if (isSelected)
         {
-            if (Input.GetMouseButtonDown(0))
+           if (Input.GetMouseButtonDown(0))
             {
-                target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+                //Check if cursor is over UI element
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                       target = Camera.main.ScreenToWorldPoint(Input.mousePosition);   
+               }
             }
-            else if (Input.GetKeyDown(KeyCode.Mouse1))
+
+        else if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                // stop movement as well
-                // target = transform.position;
-                isSelected = false;
+            isSelected = false;
+            }
+
+        else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // stop movement
+                target = transform.position;
             }
         }
     }
@@ -76,3 +94,6 @@ public class UnitMovement : MonoBehaviour
         return mPosWorldI;
     }
 }
+
+
+
