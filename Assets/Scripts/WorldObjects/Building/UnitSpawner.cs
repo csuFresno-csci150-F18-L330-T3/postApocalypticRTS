@@ -6,20 +6,14 @@ public class UnitSpawner : MonoBehaviour {
     public int unitCap = 5;
     public GameObject playerUnitPrefab;
     GameObject playerUnitPrefabClone;
+    public StatsTracker statsTracker;
 
-    int NumberOfBases()
+    private void Start()
     {
-        GameObject[] bases;
-        bases = GameObject.FindGameObjectsWithTag("PlayerBase");
-        return bases.Length;
+        statsTracker = StatsTracker.Instance();
+        statsTracker.RegBase(gameObject);
     }
-    int NumberOfUnits()
-    {
-        GameObject[] unit;
-        unit = GameObject.FindGameObjectsWithTag("PlayerUnit");
-        return unit.Length;
-    }
-
+    
     void SpawnUnit()
     {
         playerUnitPrefabClone = Instantiate(playerUnitPrefab, transform.position, Quaternion.identity) as GameObject;
@@ -27,7 +21,7 @@ public class UnitSpawner : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.U) && NumberOfUnits() < unitCap * NumberOfBases()) {
+        if (Input.GetKeyDown(KeyCode.U) && statsTracker.NumberOfUnits() < unitCap * statsTracker.NumberOfBases()) {
             SpawnUnit();
         }
     }

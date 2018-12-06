@@ -20,6 +20,7 @@ public class EnemyUnitSpawner : MonoBehaviour
         statsTracker = StatsTracker.Instance();
         statsTracker.Basenumber++;
         gameObject.name = "EnemyBase_" + statsTracker.Basenumber;
+        statsTracker.RegBase(gameObject);
     }
 
     // Update is called once per frame
@@ -31,8 +32,6 @@ public class EnemyUnitSpawner : MonoBehaviour
             en++;
             enemyUnitPrefabClone = Instantiate(enemyUnitPrefab, transform.position, Quaternion.identity) as GameObject;
             enemyUnitPrefabClone.name = gameObject.name + V + en.ToString();
-
-            statsTracker.RegEnemies(enemyUnitPrefabClone);
         }
     }
 }
