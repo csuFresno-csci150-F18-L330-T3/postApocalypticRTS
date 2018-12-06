@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StatsTracker : MonoBehaviour {
-    public List<GameObject> enemies;
+    public List<GameObject> allBases;
     private static StatsTracker statsTracker; // creates a var of class
     public static StatsTracker Instance() //function that returns a reference to this
     {
@@ -61,10 +61,16 @@ public class StatsTracker : MonoBehaviour {
         e_units = GameObject.FindGameObjectsWithTag("EnemyUnit");
         return e_units.Length;
     }
+    public int NumberOfBases()
+    {
+        GameObject[] bases;
+        bases = GameObject.FindGameObjectsWithTag("PlayerBase");
+        return bases.Length;
+    }
 
-    
-    void Start () {
-        enemies = new List<GameObject>();
+
+    void Awake () {
+        allBases = new List<GameObject>();
     }
 	
 	// Update is called once per frame
@@ -72,8 +78,9 @@ public class StatsTracker : MonoBehaviour {
 		
 	}
 
-    public void RegEnemies(GameObject clone)
+    public void RegBase(GameObject clone)
     {
-        enemies.Add(clone);
+        Debug.Log("Registered " + clone.name);
+        allBases.Add(clone);
     }
 }
