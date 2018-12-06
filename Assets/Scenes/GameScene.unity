@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 161816682}
   - component: {fileID: 161816681}
   - component: {fileID: 161816685}
+  - component: {fileID: 161816686}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -327,6 +328,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelecting: 0
+--- !u!114 &161816686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161816680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0267df26bfff7c4ba3ea51f8ae9f91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &231207624
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d563fc83a35ef4e906982249b79dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
+  allBases: []
   builder: 0
 --- !u!4 &578286443
 Transform:
