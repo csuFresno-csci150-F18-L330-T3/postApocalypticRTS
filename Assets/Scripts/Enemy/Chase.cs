@@ -59,7 +59,7 @@ public class Chase : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        direction = direction * (-1);
+        direction = Random.insideUnitCircle;
     }
     void Start ()
     {
