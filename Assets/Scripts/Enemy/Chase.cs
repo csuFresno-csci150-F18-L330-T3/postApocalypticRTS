@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chase : MonoBehaviour
 { 
     public float speed = 3f;
-    
+    private Vector2 direction;
     public float minDist = 7f;
     public float minDist_b = 5f;
     private float range, range_b;
@@ -57,9 +57,13 @@ public class Chase : MonoBehaviour
         }
         return closest; //returns the closests object
     }
-	void Start ()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Set unit as gameobject to chase with the Player tag
+        direction = direction * (-1);
+    }
+    void Start ()
+    {
+        direction = Random.insideUnitCircle;
         
 	}
 	
@@ -78,6 +82,11 @@ public class Chase : MonoBehaviour
         {
            //Enemy movement based on unit position
             transform.position = Vector2.MoveTowards(transform.position, FindClosestUnit().transform.position, Random.Range(speed -1, speed +1) * Time.deltaTime);
-        }   
+        }
+        else
+        {
+            //direction = Random.insideUnitCircle;
+            transform.Translate(direction * Time.deltaTime * Random.Range(speed - 1, speed + 1));
+        }
 	}
 }
