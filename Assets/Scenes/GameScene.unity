@@ -633,7 +633,7 @@ MonoBehaviour:
   isWeighted: 0
   hardThreshold: 1
   weightedChance: 75
-  wall: {fileID: 1844616874840632, guid: 00bea0021c7aa4f429b3a731e366fa9e, type: 2}
+  wall: {fileID: 1975990253252986, guid: 98e58eb4b4ea27346ac9af74e953fc37, type: 2}
   textureMap: {fileID: 0}
 --- !u!114 &578286441
 MonoBehaviour:
