@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollectBlueprint : MonoBehaviour {
     public int numberOfItemsToBeCollected = 1;
     public StatsTracker statsTracker;
     public GameObject UnitPrefab;
     GameObject UnitPrefabClone;
+    public Text countText;
     
     void SpawnUnit()
     {
@@ -18,34 +20,45 @@ public class CollectBlueprint : MonoBehaviour {
     {
         statsTracker = StatsTracker.Instance();
     }
+
+    void SetCountText()
+    {
+        countText.text = "Materials: " + statsTracker.NumberOfCollectedBluePrints.ToString();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var hit = collision.gameObject;
         if (hit.CompareTag("BluePrint"))
         {
-            Debug.Log("First Check"+statsTracker.NumberOfCollectedBluePrints.ToString());
+ 
             if (statsTracker.builder)
             {
                 if (numberOfItemsToBeCollected - 1> statsTracker.NumberOfCollectedBluePrints)
                 {
                     statsTracker.NumberOfCollectedBluePrints++;
                     Destroy(hit);
-                    Debug.Log("Collected Blue Prints: " + statsTracker.NumberOfCollectedBluePrints.ToString());
+
                 }
             }
             else
             { 
                 statsTracker.NumberOfCollectedBluePrints++;
                 Destroy(hit);
-                Debug.Log("Second Check" + statsTracker.NumberOfCollectedBluePrints.ToString());
+
                 if (statsTracker.NumberOfCollectedBluePrints >= numberOfItemsToBeCollected)
                 {
                     statsTracker.NumberOfCollectedBluePrints = statsTracker.NumberOfCollectedBluePrints - numberOfItemsToBeCollected;
                     SpawnUnit();
                 }
-                Debug.Log("Third Check" + statsTracker.NumberOfCollectedBluePrints.ToString());
+ 
             }
         }
     }
-    
+    void Update()
+    {
+        SetCountText();
+    }
+
+
 }

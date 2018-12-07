@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 596818218}
   - component: {fileID: 596818217}
   m_Layer: 5
-  m_Name: Counter Text
+  m_Name: Materials Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -706,9 +706,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 596818215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c588bdeecd485c34d9bd28b187a34fc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4104fba8fbddc4149b8cac717eca9ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfItemsToBeCollected: 1
+  statsTracker: {fileID: 0}
+  UnitPrefab: {fileID: 1971232845779248, guid: 2e86098922d5f8a49a31bb9718033342, type: 2}
+  countText: {fileID: 596818218}
 --- !u!114 &596818218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,7 +745,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 5
-  m_Text: 'Counter:'
+  m_Text: 'Materials:'
 --- !u!222 &596818219
 CanvasRenderer:
   m_ObjectHideFlags: 0
