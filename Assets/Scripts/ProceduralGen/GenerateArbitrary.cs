@@ -12,6 +12,7 @@ public class GenerateArbitrary : MonoBehaviour
     public GameObject objectToSpawn;
     public GenerateWalls worldScript;
     public float distToAvoid = 25f;
+    public float distFromBase = 50f;
     public int overflowLimit = 10000;
 
     void Start()
@@ -23,6 +24,7 @@ public class GenerateArbitrary : MonoBehaviour
         
         GameObject[] allBases = GameObject.FindGameObjectsWithTag("EnemyBaseSL");
         GameObject[] allWalls = GameObject.FindGameObjectsWithTag("Wall");
+        GameObject playerBase = GameObject.FindGameObjectWithTag("PlayerBase");
         Debug.Log(allBases.Length);
         Debug.Log(allWalls.Length);
 
@@ -52,6 +54,8 @@ public class GenerateArbitrary : MonoBehaviour
                             break;
                         }
                     }
+                    if (Vector3.Distance(pos, playerBase.transform.position) < distFromBase)
+                        isDistant = false;
                     if (isDistant)
                     {
                         Instantiate(objectToSpawn, pos, Quaternion.identity, transform);
