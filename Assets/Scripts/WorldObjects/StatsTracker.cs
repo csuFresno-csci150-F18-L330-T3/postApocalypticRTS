@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StatsTracker : MonoBehaviour {
     public List<GameObject> allBases;
@@ -75,7 +76,12 @@ public class StatsTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (NumberOfBases()== 0)
+        {
+            //lose conditions here.
+            Debug.Log("GameOver");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
 	}
 
     public void RegBase(GameObject clone)
