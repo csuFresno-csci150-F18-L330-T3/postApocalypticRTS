@@ -11,7 +11,7 @@ TagManager:
   - BluePrint
   - PickUps
   - Wall
-
+  - Helicopter
   layers:
   - Default
   - TransparentFX

@@ -24,6 +24,7 @@ public class GenerateWalls : MonoBehaviour{
             yOffset = Random.Range(0f, 999999f);
 
         GameObject[] playerBases = GameObject.FindGameObjectsWithTag("PlayerBase");
+        GameObject helicopter = GameObject.FindGameObjectWithTag("Helicopter");
         threshold = (threshold / 100);
         rawChance /= 100;
         weightedChance /= 100;
@@ -48,7 +49,7 @@ public class GenerateWalls : MonoBehaviour{
                                 if (Vector3.Distance(baseLoc, pos) < minDistFromBase)
                                     minDistFromBase = Vector3.Distance(baseLoc, pos);
                             }
-                            if (minDistFromBase > distanceFromPlayerBase)
+                            if (minDistFromBase > distanceFromPlayerBase && distanceFromPlayerBase < Vector3.Distance(pos, helicopter.transform.position))
                                 Instantiate(wall, pos, Quaternion.identity, transform);
                             minDistFromBase = 999999f;
                         }
@@ -61,7 +62,7 @@ public class GenerateWalls : MonoBehaviour{
                                 if (Vector3.Distance(baseLoc, pos) < minDistFromBase)
                                     minDistFromBase = Vector3.Distance(baseLoc, pos);
                             }
-                            if (minDistFromBase > distanceFromPlayerBase)
+                            if (minDistFromBase > distanceFromPlayerBase && distanceFromPlayerBase < Vector3.Distance(pos, helicopter.transform.position))
                                 Instantiate(wall, pos, Quaternion.identity, transform);
                             minDistFromBase = 999999f;
                         }
@@ -77,7 +78,7 @@ public class GenerateWalls : MonoBehaviour{
                         foreach (GameObject pBase in playerBases)
                         {
                             Vector3 baseLoc = pBase.transform.position;
-                            if (Vector3.Distance(baseLoc, pos) < minDistFromBase)
+                            if (Vector3.Distance(baseLoc, pos) < minDistFromBase && distanceFromPlayerBase > Vector3.Distance(pos, helicopter.transform.position))
                                 minDistFromBase = Vector3.Distance(baseLoc, pos);
                         }
                         if (minDistFromBase > distanceFromPlayerBase)
