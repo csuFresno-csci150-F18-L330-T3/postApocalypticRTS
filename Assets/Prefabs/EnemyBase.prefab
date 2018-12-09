@@ -228,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyUnitPrefab: {fileID: 1579646703114218, guid: dfc6582480213a84cb5a5affd76d8ab7,
     type: 2}
-  spawnRate: 10
+  spawnRate: 20
   statsTracker: {fileID: 0}
 --- !u!212 &212956551452313632
 SpriteRenderer:

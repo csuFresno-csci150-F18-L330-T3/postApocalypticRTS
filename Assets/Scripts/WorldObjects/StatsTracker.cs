@@ -80,7 +80,7 @@ public class StatsTracker : MonoBehaviour {
         {
             //lose conditions here.
             Debug.Log("GameOver");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         }
 	}
 

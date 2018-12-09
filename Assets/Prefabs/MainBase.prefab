@@ -135,8 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853a26797aeba464c845eb927006e9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCap: 5
   playerUnitPrefab: {fileID: 1026626659335066, guid: 08f45e163a174254fb4628e6a50bf307,
     type: 2}
+  statsTracker: {fileID: 0}
+  baseSpawnControl: {fileID: 0}
 --- !u!114 &114554034382083364
 MonoBehaviour:
   m_ObjectHideFlags: 1

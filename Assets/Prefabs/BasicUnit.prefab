@@ -212,6 +212,7 @@ MonoBehaviour:
   numberOfItemsToBeCollected: 2
   statsTracker: {fileID: 0}
   UnitPrefab: {fileID: 1971232845779248, guid: 2e86098922d5f8a49a31bb9718033342, type: 2}
+  countText: {fileID: 0}
 --- !u!114 &114711699010706788
 MonoBehaviour:
   m_ObjectHideFlags: 1
