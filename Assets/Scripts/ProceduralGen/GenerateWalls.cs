@@ -23,13 +23,13 @@ public class GenerateWalls : MonoBehaviour{
         if (yOffset == 0f)
             yOffset = Random.Range(0f, 999999f);
 
-        GameObject playerBase = GameObject.FindGameObjectWithTag("PlayerBase");
-        Vector3 playerBaseLoc = playerBase.transform.position;
+        GameObject[] playerBases = GameObject.FindGameObjectsWithTag("PlayerBase");
         threshold = (threshold / 100);
         rawChance /= 100;
         weightedChance /= 100;
         Debug.Log(threshold);
         textureMap = GenTexture();            //generate map for perlin noise
+        float minDistFromBase = 999999f;
         for (int x = 0; (x*objectScale) < width; x++)   //generation loop
         {
             for (int y = 0; (y*objectScale) < height; y++)
@@ -42,16 +42,28 @@ public class GenerateWalls : MonoBehaviour{
                         if (isWeighted == false)    //generation loop condition
                         {
                             Vector3 pos = new Vector3((x * objectScale) - width / 2f + .5f, (y * objectScale) - height / 2f + .5f, 0f);
-                            float dist = Vector3.Distance(pos, playerBaseLoc);
-                            if (dist > distanceFromPlayerBase)
+                            foreach (GameObject pBase in playerBases)
+                            {
+                                Vector3 baseLoc = pBase.transform.position;
+                                if (Vector3.Distance(baseLoc, pos) < minDistFromBase)
+                                    minDistFromBase = Vector3.Distance(baseLoc, pos);
+                            }
+                            if (minDistFromBase > distanceFromPlayerBase)
                                 Instantiate(wall, pos, Quaternion.identity, transform);
+                            minDistFromBase = 999999f;
                         }
                         else if (Random.value >= (1f-(textureMap.GetPixel((x * objectScale), (y * objectScale)).b))/weightedChance)    //generation loop condition
                         {
                             Vector3 pos = new Vector3((x * objectScale) - width / 2f + .5f, (y * objectScale) - height / 2f + .5f, 0f);
-                            float dist = Vector3.Distance(pos, playerBaseLoc);
-                            if (dist > distanceFromPlayerBase)
+                            foreach (GameObject pBase in playerBases)
+                            {
+                                Vector3 baseLoc = pBase.transform.position;
+                                if (Vector3.Distance(baseLoc, pos) < minDistFromBase)
+                                    minDistFromBase = Vector3.Distance(baseLoc, pos);
+                            }
+                            if (minDistFromBase > distanceFromPlayerBase)
                                 Instantiate(wall, pos, Quaternion.identity, transform);
+                            minDistFromBase = 999999f;
                         }
                     }
                 }
@@ -62,9 +74,15 @@ public class GenerateWalls : MonoBehaviour{
                     if (chance >= threshold)    //generation loop condition
                     {
                         Vector3 pos = new Vector3((x * objectScale) - width / 2f + .5f, (y * objectScale) - height / 2f + .5f, 0f);
-                        float dist = Vector3.Distance(pos, playerBaseLoc);
-                        if (dist > distanceFromPlayerBase)
+                        foreach (GameObject pBase in playerBases)
+                        {
+                            Vector3 baseLoc = pBase.transform.position;
+                            if (Vector3.Distance(baseLoc, pos) < minDistFromBase)
+                                minDistFromBase = Vector3.Distance(baseLoc, pos);
+                        }
+                        if (minDistFromBase > distanceFromPlayerBase)
                             Instantiate(wall, pos, Quaternion.identity, transform);
+                        minDistFromBase = 999999f;
                     }
                 }
             }
