@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 231207625}
   m_Layer: 9
   m_Name: Helicopter
-  m_TagString: Untagged
+  m_TagString: PlayerBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -635,6 +635,7 @@ MonoBehaviour:
   weightedChance: 75
   wall: {fileID: 1975990253252986, guid: 98e58eb4b4ea27346ac9af74e953fc37, type: 2}
   textureMap: {fileID: 0}
+  distanceFromPlayerBase: 25
 --- !u!114 &578286441
 MonoBehaviour:
   m_ObjectHideFlags: 0

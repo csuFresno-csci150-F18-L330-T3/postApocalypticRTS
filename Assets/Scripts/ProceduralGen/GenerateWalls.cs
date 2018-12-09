@@ -15,6 +15,7 @@ public class GenerateWalls : MonoBehaviour{
                                         //a pixel with a hue of 0.8 has a 20% * weightedChance to spawn
     public GameObject wall;
     public Texture2D textureMap;        //used to pass the texturemap generated to other scripts, dont add textures in script window
+    public float distanceFromPlayerBase = 10f;
 
 	void Awake () {
         if (xOffset == 0f)
@@ -22,6 +23,8 @@ public class GenerateWalls : MonoBehaviour{
         if (yOffset == 0f)
             yOffset = Random.Range(0f, 999999f);
 
+        GameObject playerBase = GameObject.FindGameObjectWithTag("PlayerBase");
+        Vector3 playerBaseLoc = playerBase.transform.position;
         threshold = (threshold / 100);
         rawChance /= 100;
         weightedChance /= 100;
@@ -36,15 +39,19 @@ public class GenerateWalls : MonoBehaviour{
                 {
                     if (Random.value <= rawChance)
                     {
-                        if (isWeighted == false)
+                        if (isWeighted == false)    //generation loop condition
                         {
                             Vector3 pos = new Vector3((x * objectScale) - width / 2f + .5f, (y * objectScale) - height / 2f + .5f, 0f);
-                            Instantiate(wall, pos, Quaternion.identity, transform);
+                            float dist = Vector3.Distance(pos, playerBaseLoc);
+                            if (dist > distanceFromPlayerBase)
+                                Instantiate(wall, pos, Quaternion.identity, transform);
                         }
-                        else if (Random.value >= (1f-(textureMap.GetPixel((x * objectScale), (y * objectScale)).b))/weightedChance)
+                        else if (Random.value >= (1f-(textureMap.GetPixel((x * objectScale), (y * objectScale)).b))/weightedChance)    //generation loop condition
                         {
                             Vector3 pos = new Vector3((x * objectScale) - width / 2f + .5f, (y * objectScale) - height / 2f + .5f, 0f);
-                            Instantiate(wall, pos, Quaternion.identity, transform);
+                            float dist = Vector3.Distance(pos, playerBaseLoc);
+                            if (dist > distanceFromPlayerBase)
+                                Instantiate(wall, pos, Quaternion.identity, transform);
                         }
                     }
                 }
@@ -52,10 +59,12 @@ public class GenerateWalls : MonoBehaviour{
                 {
                     float chance = textureMap.GetPixel((x * objectScale), (y * objectScale)).b;
                     chance = chance * weightedChance * 2 * Random.value;
-                    if (chance >= threshold)
+                    if (chance >= threshold)    //generation loop condition
                     {
                         Vector3 pos = new Vector3((x * objectScale) - width / 2f + .5f, (y * objectScale) - height / 2f + .5f, 0f);
-                        Instantiate(wall, pos, Quaternion.identity, transform);
+                        float dist = Vector3.Distance(pos, playerBaseLoc);
+                        if (dist > distanceFromPlayerBase)
+                            Instantiate(wall, pos, Quaternion.identity, transform);
                     }
                 }
             }
