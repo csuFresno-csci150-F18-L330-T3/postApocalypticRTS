@@ -23,7 +23,7 @@ public class UnitSpawner : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.U) && statsTracker.NumberOfUnits() < unitCap * statsTracker.NumberOfBases() && baseSpawnControl.FindClosestBase().transform == transform) {
+        if (Input.GetKeyDown(KeyCode.U) && statsTracker.NumberOfUnits() < 20 * statsTracker.NumberOfBases() && baseSpawnControl.FindClosestBase().transform == transform) {
             SpawnUnit();
             Debug.Log(baseSpawnControl.FindClosestBase().transform.ToString());
         }

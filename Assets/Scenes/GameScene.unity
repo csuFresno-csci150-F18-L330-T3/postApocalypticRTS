@@ -1506,7 +1506,7 @@ MonoBehaviour:
   width: 500
   height: 260
   threshold: 80
-  numberOfObjects: 10
+  numberOfObjects: 20
   objectToSpawn: {fileID: 1554896952778184, guid: f26ac4a7ed55e254bb3cc23c535af15a,
     type: 2}
   worldScript: {fileID: 578286440}
@@ -53331,6 +53331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countText: {fileID: 1634633384}
   winText: {fileID: 0}
+  isGameStart: 1
 --- !u!114 &1634633384
 MonoBehaviour:
   m_ObjectHideFlags: 0
