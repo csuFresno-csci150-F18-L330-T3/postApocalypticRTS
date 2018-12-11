@@ -76,7 +76,7 @@ public class StatsTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (NumberOfBases()== 0)
+		if (NumberOfBases()== 1)
         {
             //lose conditions here.
             Debug.Log("GameOver");
