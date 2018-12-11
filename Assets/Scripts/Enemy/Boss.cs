@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chase : MonoBehaviour
-{ 
+public class Boss : MonoBehaviour
+{
     public float speed = 3f;
     private Vector2 direction;
     public float minDist = 7f;
@@ -16,7 +16,8 @@ public class Chase : MonoBehaviour
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
-        if (pbase == null) {
+        if (pbase == null)
+        {
             //lose condition here.
         }
         else
@@ -61,13 +62,13 @@ public class Chase : MonoBehaviour
     {
         direction = Random.insideUnitCircle;
     }
-    void Start ()
+    void Start()
     {
         direction = Random.insideUnitCircle;
-        
-	}
-	
-	void Update ()
+
+    }
+
+    void Update()
     {
         // check distance between unit and enemy
         range = FindClosestUnit() != null ? Vector2.Distance(transform.position, FindClosestUnit().transform.position) : minDist;
@@ -80,13 +81,8 @@ public class Chase : MonoBehaviour
         }
         else if (range < minDist)
         {
-           //Enemy movement based on unit position
-            transform.position = Vector2.MoveTowards(transform.position, FindClosestUnit().transform.position, Random.Range(speed -1, speed +1) * Time.deltaTime);
+            //Enemy movement based on unit position
+            transform.position = Vector2.MoveTowards(transform.position, FindClosestUnit().transform.position, Random.Range(speed - 1, speed + 1) * Time.deltaTime);
         }
-        else
-        {
-            //direction = Random.insideUnitCircle;
-            transform.Translate(direction * Time.deltaTime * Random.Range(speed - 3, speed + 1));
-        }
-	}
+    }
 }
